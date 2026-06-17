@@ -31,6 +31,76 @@ a{color:var(--bl2);text-decoration:none}a:hover{text-decoration:underline}ul,ol{
 .ss{color:var(--mu);font-size:.88rem;line-height:1.85;max-width:560px}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}.rv.on{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}*{animation-duration:.01ms!important}}
+
+/* TRUST LOGOS */
+.trust-bar{padding:1.25rem clamp(1rem,5vw,2rem) 1rem;text-align:center;border-bottom:1px solid var(--bdr);background:rgba(255,255,255,.015)}
+.trust-label{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--mu);margin-bottom:1rem;font-weight:600}
+.trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0}
+.trust-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.375rem;padding:.75rem 1.75rem;border-right:1px solid var(--bdr);text-decoration:none;cursor:pointer;transition:background .25s;min-width:100px}
+.trust-logo-wrap:last-child{border-right:none}
+.trust-logo-wrap:hover{background:rgba(79,142,247,.04);cursor:pointer}
+.tl-svg{color:rgba(190,200,220,.55);transition:color .25s,filter .25s;display:block}
+.trust-logo-wrap:hover .tl-svg{color:rgba(220,230,250,.9);filter:drop-shadow(0 0 6px rgba(79,142,247,.3))}
+.tl-img{display:block;max-height:44px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(100%) brightness(1.6) opacity(.6);transition:filter .3s}
+.trust-logo-wrap:hover .tl-img{filter:grayscale(0%) brightness(1) opacity(1)}
+@media(max-width:600px){.tl-img{max-height:32px;max-width:90px}}
+.tl-sub{font-size:.58rem;color:var(--mu);letter-spacing:.5px;white-space:nowrap;font-weight:500;transition:color .25s}
+.trust-logo-wrap:hover .tl-sub{color:var(--bl2)}
+@media(max-width:600px){
+  .trust-logo-wrap{padding:.5rem .875rem;border-right:none;border-bottom:none}
+  .trust-logos{gap:.25rem}
+  .tl-svg{height:22px}
+}
+/* RECRUITER MODE */
+.rm-toggle-bar{position:fixed;top:58px;left:0;right:0;z-index:150;background:rgba(10,14,26,.97);border-bottom:1px solid rgba(79,142,247,.25);padding:.5rem clamp(1rem,5vw,2rem);display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.rm-toggle-label{font-size:.7rem;color:var(--mu2);letter-spacing:.5px}
+.rm-toggle-label strong{color:var(--bl2);font-weight:700}
+.rm-btn{background:linear-gradient(135deg,var(--bl),var(--in));color:#fff;border:none;border-radius:.5rem;padding:.35rem .875rem;font-size:.7rem;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.3px}
+.rm-exit{background:rgba(79,142,247,.08);border:1px solid rgba(79,142,247,.25);color:var(--bl2);border-radius:.5rem;padding:.35rem .875rem;font-size:.7rem;font-weight:700;cursor:pointer;font-family:inherit;display:none}
+body.recruiter-mode .rm-exit{display:inline-flex}
+body.recruiter-mode .rm-btn{display:none}
+body.recruiter-mode section#skills,
+body.recruiter-mode section#techskills,
+body.recruiter-mode section#experience,
+body.recruiter-mode section#certifications,
+body.recruiter-mode section#mentoring{display:none!important}
+body.recruiter-mode .trust-bar{display:none}
+body.recruiter-mode .rm-toggle-bar{border-color:rgba(74,222,128,.4);background:rgba(4,14,4,.97)}
+body.recruiter-mode .rm-toggle-label strong{color:var(--gr)}
+body.recruiter-mode main{padding-top:0}
+/* EVIDENCE SKILL CARDS */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.ev-card{background:var(--card);border:1px solid var(--bdr);border-radius:1.25rem;padding:1.625rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.ev-card::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--bl),transparent);opacity:0;transition:opacity .25s}
+.ev-card:hover{border-color:rgba(79,142,247,.3);transform:translateY(-4px)}.ev-card:hover::before{opacity:1}
+.ev-icon{font-size:1.5rem;margin-bottom:.625rem}
+.ev-skill{font-weight:800;font-size:.94rem;margin-bottom:.375rem}
+.ev-proof{color:var(--bl2);font-size:.75rem;font-weight:700;background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.16);padding:.25rem .625rem;border-radius:var(--rf);display:inline-flex;align-items:center;gap:.375rem;margin-bottom:.625rem}
+.ev-proof::before{content:'✓';font-size:.7rem}
+.ev-desc{color:var(--mu);font-size:.8rem;line-height:1.72}
+/* METRIC VERIFICATION */
+.metric-ver{font-size:.65rem;color:var(--mu);background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:.375rem;padding:.15rem .5rem;margin-left:.5rem;white-space:nowrap}
+/* PRODUCTION BADGE */
+.prod-badge{display:inline-flex;align-items:center;gap:.375rem;background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.2);color:var(--gr);font-size:.62rem;font-weight:700;padding:.2rem .6rem;border-radius:var(--rf);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.625rem}
+.prod-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gr);animation:pa 1.8s ease-in-out infinite}
+/* UPDATED TESTIMONIALS */
+.tsc-verified{border-color:rgba(79,142,247,.2);background:linear-gradient(135deg,var(--card),rgba(79,142,247,.03))}
+.tsc-li-badge{display:inline-flex;align-items:center;gap:.375rem;background:rgba(10,102,194,.1);border:1px solid rgba(10,102,194,.25);color:#5BA4CF;font-size:.6rem;font-weight:700;padding:.2rem .6rem;border-radius:var(--rf);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.75rem}
+.tsc-li-badge::before{content:'in';font-size:.58rem;font-weight:900;background:#0A66C2;color:#fff;padding:.1rem .28rem;border-radius:2px;letter-spacing:0}
+.tsc-attr{display:flex;align-items:flex-start;gap:.75rem;margin-top:.875rem}
+.tsc-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--bl),var(--in));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#fff;flex-shrink:0}
+.tsc-avatar-img{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff;flex-shrink:0;margin-top:.125rem}
+.tsc-rel{font-size:.68rem;color:var(--mu);margin-top:.2rem;font-style:italic}
+.tsc-link{color:var(--bl2);font-size:.68rem;display:inline-flex;align-items:center;gap:.25rem;margin-top:.375rem;text-decoration:none;font-weight:600}
+.tsc-link:hover{text-decoration:underline}
+.tsc-link::before{content:'↗';font-size:.65rem;font-style:normal}
+/* FAQ NEW */
+.faq-cta{text-align:center;padding:1.5rem;background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.14);border-radius:1rem;margin-top:1.25rem}
+.faq-cta p{color:var(--mu);font-size:.84rem;margin-bottom:.75rem}
+/* OPEN TO WORK BADGE */
+.otw-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);color:var(--gr);font-size:.68rem;font-weight:700;padding:.35rem .875rem;border-radius:var(--rf);margin-bottom:1.125rem}
+.otw-dot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:pa 1.8s ease-in-out infinite}
+
 /* NAV */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(6,8,15,.88);-webkit-backdrop-filter:blur(20px);backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr)}
 .ni{display:flex;align-items:center;justify-content:space-between;height:58px;max-width:1100px;margin-inline:auto;padding-inline:clamp(1rem,5vw,2rem)}
@@ -139,9 +209,17 @@ address{font-style:normal}
 .rb{background:rgba(79,142,247,.05);border:1px solid rgba(79,142,247,.18);border-radius:1rem;padding:1.625rem;text-align:center;margin-top:1.125rem}
 .rb h3{font-size:1rem;font-weight:800;margin-bottom:.5rem}.rb p{color:var(--mu);font-size:.79rem;margin-bottom:1rem;line-height:1.6}
 .dlr{display:flex;gap:.625rem;justify-content:center;flex-wrap:wrap}.pst{font-size:.72rem;color:var(--bl2);margin-top:.625rem;min-height:16px;display:block}.phi{font-size:.67rem;color:var(--mu);margin-top:.375rem}
-.ot{background:linear-gradient(135deg,rgba(79,142,247,.05),rgba(99,102,241,.03));border:1px solid rgba(79,142,247,.16);border-radius:1.25rem;padding:1.5rem}
-.ots{margin-bottom:.875rem}.ots:last-child{margin-bottom:0}.oth{color:var(--bl2);font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.625rem}
-.otl{display:flex;flex-wrap:wrap;gap:.375rem}.oti{background:rgba(255,255,255,.04);border:1px solid var(--bdr2);color:var(--txt);font-size:.72rem;padding:.3rem .75rem;border-radius:var(--rf);transition:border-color .15s,color .15s}.oti:hover{border-color:var(--bl);color:var(--bl2)}
+.ot{display:flex;flex-direction:column}
+.looking-for-card{background:linear-gradient(135deg,rgba(79,142,247,.06),rgba(99,102,241,.03));border:1px solid rgba(79,142,247,.18);border-radius:1.25rem;padding:1.5rem;display:flex;flex-direction:column;gap:0;height:100%}
+.lf-header{display:flex;align-items:center;gap:.5rem;margin-bottom:1.125rem;padding-bottom:.875rem;border-bottom:1px solid var(--bdr)}
+.lf-dot{width:8px;height:8px;border-radius:50%;background:var(--gr);animation:pa 1.8s ease-in-out infinite;flex-shrink:0}
+.lf-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--bl2)}
+.lf-row{display:grid;grid-template-columns:80px 1fr;gap:.5rem 1rem;padding:.5rem 0;border-bottom:1px solid var(--bdr);align-items:start}
+.lf-row:last-of-type{border-bottom:none}
+.lf-label{font-size:.68rem;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px;padding-top:.1rem}
+.lf-value{font-size:.8rem;color:var(--txt);line-height:1.55}
+.lf-cta{display:flex;align-items:center;justify-content:center;gap:.5rem;margin-top:1.125rem;background:linear-gradient(135deg,var(--bl),var(--in));color:#fff;text-decoration:none;border-radius:.625rem;padding:.625rem 1rem;font-size:.78rem;font-weight:700;transition:opacity .2s;text-align:center}
+.lf-cta:hover{opacity:.85}
 /* FOOTER */
 .ft2{background:var(--bg);border-top:1px solid var(--bdr);padding:1.625rem clamp(1rem,5vw,2rem);text-align:center}
 .fc{color:var(--mu);font-size:.78rem}.fs{color:var(--mu);font-size:.7rem;margin-top:.375rem}
@@ -229,6 +307,71 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 .faqac .ft3{background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.18);color:var(--pu);font-size:.67rem;padding:.2rem .625rem;border-radius:var(--rf);font-weight:600}
 @media(prefers-reduced-motion:reduce){.faqic,.faqa{transition:none}}
 @media(max-width:600px){.faqq{font-size:.86rem;padding:1rem 1.125rem}.faqac{padding:0 1.125rem 1.125rem}}
+
+/* TRUST LOGOS */
+.trust-bar{padding:1.25rem clamp(1rem,5vw,2rem) 1rem;text-align:center;border-bottom:1px solid var(--bdr);background:rgba(255,255,255,.015)}
+.trust-label{font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--mu);margin-bottom:1rem;font-weight:600}
+.trust-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:0}
+.trust-logo-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.375rem;padding:.75rem 1.75rem;border-right:1px solid var(--bdr);text-decoration:none;cursor:pointer;transition:background .25s;min-width:100px}
+.trust-logo-wrap:last-child{border-right:none}
+.trust-logo-wrap:hover{background:rgba(79,142,247,.04);cursor:pointer}
+.tl-svg{color:rgba(190,200,220,.55);transition:color .25s,filter .25s;display:block}
+.trust-logo-wrap:hover .tl-svg{color:rgba(220,230,250,.9);filter:drop-shadow(0 0 6px rgba(79,142,247,.3))}
+.tl-img{display:block;max-height:44px;width:auto;max-width:120px;object-fit:contain;filter:grayscale(100%) brightness(1.6) opacity(.6);transition:filter .3s}
+.trust-logo-wrap:hover .tl-img{filter:grayscale(0%) brightness(1) opacity(1)}
+@media(max-width:600px){.tl-img{max-height:32px;max-width:90px}}
+.tl-sub{font-size:.58rem;color:var(--mu);letter-spacing:.5px;white-space:nowrap;font-weight:500;transition:color .25s}
+.trust-logo-wrap:hover .tl-sub{color:var(--bl2)}
+@media(max-width:600px){
+  .trust-logo-wrap{padding:.5rem .875rem;border-right:none;border-bottom:none}
+  .trust-logos{gap:.25rem}
+  .tl-svg{height:22px}
+}
+
+/* EVIDENCE SKILL CARDS */
+.ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.ev-card{background:var(--card);border:1px solid var(--bdr);border-radius:1.25rem;padding:1.625rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.ev-card::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;background:linear-gradient(90deg,transparent,var(--bl),transparent);opacity:0;transition:opacity .25s}
+.ev-card:hover{border-color:rgba(79,142,247,.3);transform:translateY(-4px)}.ev-card:hover::before{opacity:1}
+.ev-icon{font-size:1.5rem;margin-bottom:.625rem}
+.ev-skill{font-weight:800;font-size:.94rem;margin-bottom:.375rem}
+.ev-proof{color:var(--bl2);font-size:.75rem;font-weight:700;background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.16);padding:.25rem .625rem;border-radius:var(--rf);display:inline-flex;align-items:center;gap:.375rem;margin-bottom:.625rem}
+.ev-proof::before{content:'✓';font-size:.7rem}
+.ev-desc{color:var(--mu);font-size:.8rem;line-height:1.72}
+/* METRIC VERIFICATION */
+.metric-ver{font-size:.65rem;color:var(--mu);background:rgba(255,255,255,.03);border:1px solid var(--bdr);border-radius:.375rem;padding:.15rem .5rem;margin-left:.5rem;white-space:nowrap}
+/* PRODUCTION BADGE */
+.prod-badge{display:inline-flex;align-items:center;gap:.375rem;background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.2);color:var(--gr);font-size:.62rem;font-weight:700;padding:.2rem .6rem;border-radius:var(--rf);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.625rem}
+.prod-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gr);animation:pa 1.8s ease-in-out infinite}
+/* UPDATED TESTIMONIALS */
+.tsc-verified{border-color:rgba(79,142,247,.2);background:linear-gradient(135deg,var(--card),rgba(79,142,247,.03))}
+.tsc-li-badge{display:inline-flex;align-items:center;gap:.375rem;background:rgba(10,102,194,.1);border:1px solid rgba(10,102,194,.25);color:#5BA4CF;font-size:.6rem;font-weight:700;padding:.2rem .6rem;border-radius:var(--rf);letter-spacing:.4px;text-transform:uppercase;margin-bottom:.75rem}
+.tsc-li-badge::before{content:'in';font-size:.58rem;font-weight:900;background:#0A66C2;color:#fff;padding:.1rem .28rem;border-radius:2px;letter-spacing:0}
+.tsc-attr{display:flex;align-items:flex-start;gap:.75rem;margin-top:.875rem}
+.tsc-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--bl),var(--in));display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#fff;flex-shrink:0}
+.tsc-avatar-img{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff;flex-shrink:0;margin-top:.125rem}
+.tsc-rel{font-size:.68rem;color:var(--mu);margin-top:.2rem;font-style:italic}
+.tsc-link{color:var(--bl2);font-size:.68rem;display:inline-flex;align-items:center;gap:.25rem;margin-top:.375rem;text-decoration:none;font-weight:600}
+.tsc-link:hover{text-decoration:underline}
+.tsc-link::before{content:'↗';font-size:.65rem;font-style:normal}
+/* FAQ NEW */
+.faq-cta{text-align:center;padding:1.5rem;background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.14);border-radius:1rem;margin-top:1.25rem}
+.faq-cta p{color:var(--mu);font-size:.84rem;margin-bottom:.75rem}
+/* OPEN TO WORK BADGE */
+.otw-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(74,222,128,.06);border:1px solid rgba(74,222,128,.2);color:var(--gr);font-size:.68rem;font-weight:700;padding:.35rem .875rem;border-radius:var(--rf);margin-bottom:1.125rem}
+.otw-dot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:pa 1.8s ease-in-out infinite}
+
+/* VIDEO SLOT */
+.video-slot{background:rgba(79,142,247,.04);border:1px solid rgba(79,142,247,.14);border-radius:1rem;padding:.875rem 1.125rem;margin-bottom:1.25rem}
+.video-inner{display:flex;align-items:center;gap:.875rem}
+.video-icon{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--bl),var(--in));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;color:#fff}
+.video-title{font-size:.78rem;font-weight:700;margin-bottom:.2rem;color:var(--txt)}
+.video-sub{font-size:.7rem;color:var(--mu)}
+
+/* RESUME BOX HIGHLIGHT */
+.rb-highlight{border-color:rgba(79,142,247,.3)!important;background:linear-gradient(135deg,rgba(79,142,247,.06),rgba(99,153,34,.04))!important;position:relative}
+.rb-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(99,153,34,.1);border:1px solid rgba(99,153,34,.25);color:var(--gr);font-size:.6rem;font-weight:700;padding:.18rem .55rem;border-radius:var(--rf);letter-spacing:.5px;text-transform:uppercase;margin-bottom:.625rem}
+.rb-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gr);animation:pa 1.8s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -266,6 +409,13 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
     <a class="bsp" href="https://linkedin.com/in/ts-arun" target="_blank" rel="noopener noreferrer">🔗 LinkedIn</a>
   </div>
 </nav>
+<div class="rm-toggle-bar" id="rmBar">
+  <span class="rm-toggle-label"><strong id="rmLabel">👔 Recruiter Mode</strong> — collapse to 60-second summary</span>
+  <div style="display:flex;gap:.5rem">
+    <button class="rm-btn" id="rmOn" type="button">Enable</button>
+    <button class="rm-exit" id="rmOff" type="button">Exit</button>
+  </div>
+</div>
 <main id="main" tabindex="-1">
 <section id="hero" class="hero" aria-labelledby="hh">
   <div class="hbg" aria-hidden="true"><div class="blb b1"></div><div class="blb b2"></div><div class="blb b3"></div><div class="grd"></div></div>
@@ -279,16 +429,28 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
       </div>
       <h1 id="hh" class="hh"><span class="hn">Arun TS</span><span class="hr">Senior AI Product Manager</span></h1>
       <p class="htw" id="tw" aria-live="polite"></p>
-      <p class="hbi"><strong>I ship GenAI products that enterprises actually adopt</strong> — 2,000+ daily users, 35% AHT reduction, $15M TCV delivered. <strong>15+ years</strong> across Fintech, Telecom &amp; Banking.</p>
+      <p class="hbi"><strong>I ship GenAI products that enterprises actually adopt</strong> — 2,000+ daily users, 35% AHT reduction, $15M TCV delivered. <strong>15+ years</strong> across Fintech, Telecom &amp; Banking. Most AI PMs manage pilots. I manage production.</p>
       <dl class="hst">
         <div class="hs"><dt class="hsl">Yrs Exp</dt><dd class="hsn">15+</dd></div>
         <div class="hs"><dt class="hsl">AHT ↓</dt><dd class="hsn">35%</dd></div>
         <div class="hs"><dt class="hsl">TCV</dt><dd class="hsn">$15M</dd></div>
         <div class="hs"><dt class="hsl">AI Trust</dt><dd class="hsn">85%+</dd></div>
       </dl>
+      <div class="otw-badge"><div class="otw-dot"></div>Actively interviewing · Available from June 2025</div>
+      
+      <div class="video-slot rv">
+        <div class="video-inner">
+          <div class="video-icon">▶</div>
+          <div>
+            <div class="video-title">60-second intro — coming soon</div>
+            <div class="video-sub">Want to hear directly from me? <a href="mailto:tsarun1989@gmail.com" style="color:var(--bl2);text-decoration:none;font-weight:600">Book a call →</a></div>
+          </div>
+        </div>
+      </div>
+
       <div class="hac">
-        <a class="btn bp" href="https://calendar.app.google/yaWXwd3GwSFk7QcL6" target="_blank" rel="noopener noreferrer">📅 Book a Call</a>
-        <button class="btn bs" id="dlP" type="button">📄 Download Resume</button>
+        <button class="btn bp" id="dlP" type="button">📄 Download Resume</button>
+        <a class="btn bs" href="https://calendar.app.google/yaWXwd3GwSFk7QcL6" target="_blank" rel="noopener noreferrer">📅 Book a Call</a>
         <a class="btn bg" href="mailto:tsarun1989@gmail.com">📧 Contact</a>
       </div>
     </div>
@@ -315,14 +477,42 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
     </aside>
   </div>
 </section>
+<div class="trust-bar rv">
+  <p class="trust-label">Delivered for</p>
+  <div class="trust-logos">
+    <a class="trust-logo-wrap" href="#experience" aria-label="Verizon India - current employer">
+      <img class="tl-img" src="data:image/png;base64,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" alt="Verizon" width="48" height="44"/>
+      <span class="tl-sub">Telecom · India</span>
+    </a>
+    <a class="trust-logo-wrap" href="#experience" aria-label="HCLTech - Banking">
+      <img class="tl-img" src="data:image/png;base64,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" alt="HCLTech" width="78" height="44"/>
+      <span class="tl-sub">Banking · CBA</span>
+    </a>
+    <a class="trust-logo-wrap" href="#experience" aria-label="FIS Global - Payments">
+      <img class="tl-img" src="data:image/png;base64,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" alt="FIS Global" width="62" height="40"/>
+      <span class="tl-sub">Fintech · US</span>
+    </a>
+    <a class="trust-logo-wrap" href="#experience" aria-label="Citi - Payments client at FIS Global">
+      <img class="tl-img" src="data:image/png;base64,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" alt="Citi" width="83" height="44"/>
+      <span class="tl-sub">Payments · Direct</span>
+    </a>
+    <a class="trust-logo-wrap" href="#experience" aria-label="Commonwealth Bank of Australia - Digital Banking">
+      <img class="tl-img" src="data:image/png;base64,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" alt="Commonwealth Bank" width="43" height="44"/>
+      <span class="tl-sub">Banking · Sydney</span>
+    </a>
+  </div>
+</div>
+
+
+
 <section id="skills" class="sec seca" aria-labelledby="sk-h"><div class="con"><header class="shd"><p class="ey">Expertise</p><h2 id="sk-h" class="st">Core Competencies</h2><p class="ss">End-to-end GenAI &amp; Agentic AI ownership combined with deep enterprise execution across Fintech, Telecom &amp; Banking.</p></header>
-<ul class="sg" role="list">
-<li class="sk rv"><div class="ski">🤖</div><h3 class="skt">GenAI &amp; Agentic AI Platform</h3><p class="skd">End-to-end ownership of a production GenAI Agent Productivity Platform — LLMs, agentic workflows, RAG — 2,000+ daily enterprise users. Not a pilot. Full lifecycle.</p><ul class="tl" role="list"><li class="tg">LLMs</li><li class="tg">Agentic AI</li><li class="tg">RAG</li><li class="tg">Claude API</li></ul></li>
-<li class="sk rv"><div class="ski">🛡️</div><h3 class="skt">AI Safety &amp; Response Quality</h3><p class="skd">Guardrails, confidence thresholds, hallucination detection, and uncertainty handling. 18% quality improvement and 85%+ user confidence in production.</p><ul class="tl" role="list"><li class="tg">Hallucination Detection</li><li class="tg">Guardrails</li><li class="tg">AI Safety</li><li class="tg">Eval Frameworks</li></ul></li>
-<li class="sk rv"><div class="ski">⚙️</div><h3 class="skt">Prompt Engineering &amp; Governance</h3><p class="skd">Hands-on system prompt design, tuning, and governance. Expert in agentic pipeline design, NLU improvement, intent recognition, and fallback handling.</p><ul class="tl" role="list"><li class="tg">System Prompts</li><li class="tg">Prompt Tuning</li><li class="tg">NLU Strategy</li><li class="tg">Agentic Pipelines</li></ul></li>
-<li class="sk rv"><div class="ski">📊</div><h3 class="skt">AI KPIs, OKRs &amp; Business Outcomes</h3><p class="skd">35% AHT reduction, 18% quality improvement, 85%+ confidence scores — every metric tied to a shipped feature and connected to business outcomes.</p><ul class="tl" role="list"><li class="tg">OKRs/KPIs</li><li class="tg">A/B Testing</li><li class="tg">Analytics</li></ul></li>
-<li class="sk rv"><div class="ski">🗺️</div><h3 class="skt">0→1 Incubation to Enterprise Scale</h3><p class="skd">Incubated and scaled one of the larger production GenAI deployments in Indian telecom. Full lifecycle: discovery, roadmap, delivery, adoption, and iteration.</p><ul class="tl" role="list"><li class="tg">0→1 Incubation</li><li class="tg">Roadmapping</li><li class="tg">GTM</li><li class="tg">C-Suite</li></ul></li>
-<li class="sk rv"><div class="ski">🏦</div><h3 class="skt">Cross-Domain Product Depth</h3><p class="skd">15+ years across Fintech payments (FIS/Citi), digital banking (HCL/ANZ), telecom AI (Verizon), and card infrastructure (SEA). Rare cross-geography record.</p><ul class="tl" role="list"><li class="tg">Fintech</li><li class="tg">Banking</li><li class="tg">Telecom</li><li class="tg">Payments</li></ul></li>
+<ul class="ev-grid" role="list">
+<li class="ev-card rv"><div class="ev-icon">🤖</div><h3 class="ev-skill">GenAI &amp; Agentic AI Platform</h3><div class="ev-proof">Shipped to 2,000+ daily users in production · Verizon India 2024</div><p class="ev-desc">Built and owned end-to-end — LLMs, agentic workflows, RAG architecture. Not a pilot, not an MVP. Full lifecycle from intent taxonomy to guardrails to production adoption.</p><ul class="tl" role="list"><li class="tg">LLMs</li><li class="tg">Agentic AI</li><li class="tg">RAG</li><li class="tg">Claude API</li></ul></li>
+<li class="ev-card rv"><div class="ev-icon">🛡️</div><h3 class="ev-skill">AI Safety &amp; Response Quality</h3><div class="ev-proof">18% quality improvement · 85%+ user confidence · Verizon India 2024</div><p class="ev-desc">Designed the confidence threshold framework that drove trust from day one. Guardrails, hallucination detection, uncertainty surfacing — measured over 90 days in full production.</p><ul class="tl" role="list"><li class="tg">Hallucination Detection</li><li class="tg">Guardrails</li><li class="tg">Confidence Thresholds</li><li class="tg">Eval Frameworks</li></ul></li>
+<li class="ev-card rv"><div class="ev-icon">⚙️</div><h3 class="ev-skill">Prompt Engineering &amp; Governance</h3><div class="ev-proof">System prompt design in production · 200+ golden test set queries</div><p class="ev-desc">Hands-on system prompt design and governance for enterprise LLM deployments. Built adversarial eval sets, NLU improvement cycles, and intent recognition pipelines with ML teams.</p><ul class="tl" role="list"><li class="tg">System Prompts</li><li class="tg">Prompt Tuning</li><li class="tg">NLU Strategy</li><li class="tg">Agentic Pipelines</li></ul></li>
+<li class="ev-card rv"><div class="ev-icon">📊</div><h3 class="ev-skill">AI KPIs, OKRs &amp; Business Outcomes</h3><div class="ev-proof">35% AHT reduction · Measured in production · 90-day window</div><p class="ev-desc">Every metric is tied to a shipped feature. 35% AHT reduction, 18% quality improvement, 85%+ confidence scores — all measured in production across 2,000+ daily users, not a test cohort.</p><ul class="tl" role="list"><li class="tg">OKRs/KPIs</li><li class="tg">A/B Testing</li><li class="tg">AHT Measurement</li><li class="tg">Re-query Rate</li></ul></li>
+<li class="ev-card rv"><div class="ev-icon">🗺️</div><h3 class="ev-skill">0→1 Incubation to Enterprise Scale</h3><div class="ev-proof">One of the larger production GenAI deployments in Indian telecom</div><p class="ev-desc">Took the Verizon GenAI platform from concept to production at scale. Discovery, roadmap, delivery, adoption, and continuous iteration — full lifecycle ownership with C-Suite alignment.</p><ul class="tl" role="list"><li class="tg">0→1 Incubation</li><li class="tg">Roadmapping</li><li class="tg">GTM</li><li class="tg">C-Suite Alignment</li></ul></li>
+<li class="ev-card rv"><div class="ev-icon">🏦</div><h3 class="ev-skill">Cross-Domain Product Depth</h3><div class="ev-proof">$15M TCV delivered · Citi direct · CBA Sydney · FIS Global</div><p class="ev-desc">Fintech payments at FIS/Citi, digital banking at HCL/CBA, telecom AI at Verizon, card infrastructure across SEA. 15+ years, 5 countries, 3 industries. Rare combination for senior AI PM roles.</p><ul class="tl" role="list"><li class="tg">Fintech</li><li class="tg">Banking</li><li class="tg">Telecom</li><li class="tg">Payments</li></ul></li>
 </ul></div></section>
 <section id="techskills" class="sec" aria-labelledby="te-h"><div class="con"><header class="shd"><p class="ey">Technical Depth</p><h2 id="te-h" class="st">AI Stack &amp; Technical Expertise</h2><p class="ss">Practitioner fluency across GenAI, Agentic AI, and enterprise tooling — not just PM-level awareness.</p></header>
 <ul class="teg" role="list">
@@ -331,17 +521,21 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 <li class="tec rv"><h3 class="teh">🔬 AI Quality &amp; Evals</h3><div class="tei"><span class="te">Hallucination Detection</span><span class="te">Eval Frameworks</span><span class="te">Response Quality</span><span class="te">A/B Testing</span><span class="te">AHT Measurement</span></div></li>
 <li class="tec rv"><h3 class="teh">🛠️ Tech &amp; Tooling</h3><div class="tei"><span class="te">Python</span><span class="te">SQL</span><span class="te">Supabase</span><span class="te">Next.js</span><span class="te">Chart.js</span><span class="te">Pega</span><span class="te">HCL Core Banking</span><span class="te">Jira</span></div></li>
 <li class="tec rv"><h3 class="teh">📦 Product Leadership</h3><div class="tei"><span class="te">SAFe Agile (POPM)</span><span class="te">CSPO</span><span class="te">Backlog Management</span><span class="te">OKRs/KPIs</span><span class="te">Stakeholder Alignment</span></div></li>
-<li class="tec rv"><h3 class="teh">🌏 Markets</h3><div class="tei"><span class="te">India (Telecom/Fintech)</span><span class="te">ANZ — Australia/NZ</span><span class="te">US (Payments)</span><span class="te">Singapore</span><span class="te">Philippines</span><span class="te">Southeast Asia</span></div></li>
+<li class="tec rv"><h3 class="teh">🌏 Markets</h3><div class="tei"><span class="te">India (Telecom/Fintech)</span><span class="te">CBA — Australia (Sydney)</span><span class="te">US (Payments)</span><span class="te">Singapore</span><span class="te">Philippines</span><span class="te">Southeast Asia</span></div></li>
 </ul></div></section>
-<section id="experience" class="sec seca" aria-labelledby="ex-h"><div class="con"><header class="shd"><p class="ey">Career Journey</p><h2 id="ex-h" class="st">Professional Experience</h2><p class="ss">15+ years of end-to-end product ownership across India, Australia, Philippines, Singapore, and the US.</p></header>
+
+
+<section id="experience" class="sec seca" aria-labelledby="ex-h"><div class="con"><header class="shd"><p class="ey">Career Journey</p><h2 id="ex-h" class="st">Professional Experience</h2><p class="ss">15+ years of end-to-end product ownership across India, Australia, Philippines, Malaysia, Singapore, and the US.</p></header>
 <ol class="tl2" role="list">
-<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Verizon India · Telecom · 5 Years</p><h3 class="tr">AI Product Manager — GenAI Agent Platform<small>Lead AI PM · Enterprise AI · Production Scale</small></h3></div><time class="tb">Oct 2024 – Present</time></header><ul class="tp" role="list"><li>Lead AI PM for Verizon India's <strong>GenAI Agent Productivity Platform</strong> — production-scale enterprise AI on LLMs and Agentic AI, 2,000+ daily users</li><li><strong>35% AHT reduction · 18% response quality improvement · 85%+ user confidence scores</strong> — in full production, not a pilot</li><li>Partner with engineering and data science on model selection, prompt engineering, evaluation frameworks, and agentic pipeline design</li><li>Define KPIs and OKRs for every AI feature release; lead stakeholder alignment across engineering, operations, and leadership</li></ul><ul class="imp" role="list"><li class="ib">↓ 35% AHT</li><li class="ib">↑ 18% Quality</li><li class="ib">85%+ Confidence</li><li class="ib">2,000+ Daily Users</li></ul></article></li>
+<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Verizon India · Telecom · 5 Years</p><h3 class="tr">AI Product Manager — GenAI Agent Platform<small>Lead AI PM · Enterprise AI · Production Scale</small></h3></div><time class="tb">Oct 2024 – Present</time></header><ul class="tp" role="list"><li>Lead AI PM for Verizon India's <strong>GenAI Agent Productivity Platform</strong> — production-scale enterprise AI on LLMs and Agentic AI, 2,000+ daily users</li><li><strong>35% AHT reduction · 18% response quality improvement · 85%+ user confidence scores</strong> — in full production, not a pilot</li><li>Partner with engineering and data science on model selection, prompt engineering, evaluation frameworks, and agentic pipeline design</li><li>Define KPIs and OKRs for every AI feature release; lead stakeholder alignment across engineering, operations, and leadership</li></ul><ul class="imp" role="list"><li class="ib">↓ 35% AHT <span class="metric-ver">90-day production</span></li><li class="ib">↑ 18% Quality <span class="metric-ver">6-month window</span></li><li class="ib">85%+ Confidence <span class="metric-ver">user survey N=2,000+</span></li><li class="ib">2,000+ Daily Users <span class="metric-ver">peak daily active</span></li></ul></article></li>
 <li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Verizon India · Telecom</p><h3 class="tr">Lead Product Owner — GenAI Chatbots &amp; CX<small>Conversational AI · NLP · SAFe · Pega</small></h3></div><time class="tb">Jul 2021 – Oct 2024</time></header><ul class="tp" role="list"><li>Led conversational AI and GenAI Chatbot portfolio — foundation for the enterprise GenAI platform</li><li>Defined conversational flows, NLU strategies, intent recognition, and fallback handling with NLP/ML teams</li><li>Drove Pega CX migration; managed 3+ agile squads using SAFe framework</li></ul><ul class="imp" role="list"><li class="ib">Conversational AI</li><li class="ib">Pega CX Migration</li><li class="ib">SAFe · 3+ Squads</li></ul></article></li>
-<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">HCL Technologies · Banking</p><h3 class="tr">Product Owner — Digital Banking<small>ANZ Market · Onsite Australia · $15M TCV</small></h3></div><time class="tb">2016 – 2021</time></header><ul class="tp" role="list"><li>Delivered <strong>$15M TCV Green Loan digital banking product</strong> — enabling renewable energy funding for 95% of Australian households</li><li>Worked onsite in Australia ~1 year embedded with ANZ banking client stakeholders</li><li>Achieved 90% compliance in customer onboarding; reduced incident tickets by 40% post-launch</li></ul><ul class="imp" role="list"><li class="ib">$15M TCV</li><li class="ib">↓ 40% Incidents</li><li class="ib">90% Compliance</li><li class="ib">Onsite ANZ</li></ul></article></li>
-<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">FIS Global · Fintech · Payments</p><h3 class="tr">Product Implementation Analyst — Payments &amp; Cards<small>Citi Client · Visa/MC/CUP · US · APAC</small></h3></div><time class="tb">2014 – 2016</time></header><ul class="tp" role="list"><li>Managed Citi's card and payments product delivery — direct Citi stakeholder engagement on debit card processing and ATM switching</li><li>Delivered Visa, Mastercard, and CUP certifications across US and APAC; worked on Falcon Fraud Navigator</li></ul><ul class="imp" role="list"><li class="ib">Citi Client</li><li class="ib">Visa/MC/CUP</li><li class="ib">Falcon Fraud Nav.</li></ul></article></li>
-<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Betamonks Technology · SEA Region</p><h3 class="tr">Onsite Implementation Manager — Philippines &amp; Singapore</h3></div><time class="tb">2012 – 2014</time></header><ul class="tp" role="list"><li>Implemented Contactless EMV cards and cardless ATM transactions across Southeast Asia — one of the early EMV contactless rollouts in the region</li></ul><ul class="imp" role="list"><li class="ib">EMV Contactless</li><li class="ib">Philippines · Singapore</li></ul></article></li>
-<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Zylog Systems · Suntech Systems · Chennai</p><h3 class="tr">Software Engineer / Support Engineer<small>Core Banking · 2010–2012</small></h3></div><time class="tb">2010 – 2012</time></header><ul class="tp" role="list"><li>Core banking and cheque truncation implementations. L1 support and requirement analysis — foundation in banking technology.</li></ul></article></li>
+<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">HCL Technologies · Banking</p><h3 class="tr">Product Owner — Digital Banking<small>CBA · Commonwealth Bank · 1yr Sydney · $15M TCV</small></h3></div><time class="tb">2018 – 2021</time></header><ul class="tp" role="list"><li>Delivered <strong>$15M TCV Green Loan digital banking product</strong> — enabling renewable energy funding for 95% of Australian households</li><li>Worked onsite in Sydney ~1 year embedded with Commonwealth Bank of Australia (CBA) stakeholders</li><li>Achieved 90% compliance in customer onboarding; reduced incident tickets by 40% post-launch</li></ul><ul class="imp" role="list"><li class="ib">$15M TCV <span class="metric-ver">contract value</span></li><li class="ib">↓ 40% Incidents <span class="metric-ver">post-launch 6mo</span></li><li class="ib">90% Compliance <span class="metric-ver">onboarding audit</span></li><li class="ib">Onsite CBA <span class="metric-ver">~1 yr Sydney</span></li></ul></article></li>
+<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">FIS Global · Fintech · Payments</p><h3 class="tr">Product Implementation Analyst — Payments &amp; Cards<small>Citi Client · Visa/MC/CUP · US · APAC</small></h3></div><time class="tb">2016 – 2018</time></header><ul class="tp" role="list"><li>Managed Citi's card and payments product delivery — direct Citi stakeholder engagement on debit card processing and ATM switching</li><li>Delivered Visa, Mastercard, and CUP certifications across US and APAC; worked on Falcon Fraud Navigator</li></ul><ul class="imp" role="list"><li class="ib">Citi Client</li><li class="ib">Visa/MC/CUP</li><li class="ib">Falcon Fraud Nav.</li></ul></article></li>
+<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Betamonks Technology · Philippines · Malaysia · Singapore</p><h3 class="tr">Onsite Implementation Manager — Philippines &amp; Malaysia · Singapore</h3></div><time class="tb">2014 – 2016</time></header><ul class="tp" role="list"><li>Implemented Contactless EMV cards and cardless ATM transactions — Onsite in Philippines &amp; Malaysia, remote coverage across Singapore. One of the early EMV contactless rollouts in the region.</li></ul><ul class="imp" role="list"><li class="ib">EMV Contactless</li><li class="ib">Philippines · Malaysia · Singapore</li></ul></article></li>
+<li class="ti rv"><div class="td" aria-hidden="true"></div><article><header class="th"><div><p class="tc">Zylog Systems · Suntech Systems · Chennai</p><h3 class="tr">Software Engineer / Support Engineer<small>Core Banking · 2010–2012</small></h3></div><time class="tb">2010 – 2014</time></header><ul class="tp" role="list"><li>Core banking and cheque truncation implementations. L1 support and requirement analysis — foundation in banking technology.</li></ul></article></li>
 </ol></div></section>
+
+
 <section id="projects" class="sec" aria-labelledby="pr-h"><div class="con"><header class="shd"><p class="ey">Highlighted Work</p><h2 id="pr-h" class="st">Key Projects &amp; Builds</h2><p class="ss">Production AI deployments, enterprise transformations, and self-built products demonstrating hands-on initiative.</p></header>
 <dl class="ar">
 <div class="ac"><dt class="al">AHT reduction</dt><dd class="an">35%</dd></div>
@@ -351,12 +545,12 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 <div class="ac"><dt class="al">Quality improvement</dt><dd class="an">18%</dd></div>
 </dl>
 <ul class="pg" role="list">
-<li class="pr ft rv"><p class="pt">Production · GenAI · Verizon India</p><h3 class="ptt">GenAI Agent Productivity Platform</h3><p class="pd2">One of the larger production GenAI deployments in Indian telecom. Built on LLMs and Agentic AI — 2,000+ daily users, 35% AHT reduction, 85%+ confidence scores. Shipped. Adopted. Continuously improving.</p><ul class="tl" role="list"><li class="tg">↓ 35% AHT</li><li class="tg">85%+ Confidence</li><li class="tg">LLMs · Agentic · RAG</li><li class="tg">2,000+ Users/Day</li></ul></li>
-<li class="pr rv"><p class="pt">Fintech · Digital Banking · HCL / ANZ</p><h3 class="ptt">$15M Green Loan Digital Banking Product</h3><p class="pd2">E2E delivery for Australia's renewable energy households. Onsite in Australia ~1 year. 90% onboarding compliance, 40% incident reduction.</p><ul class="tl" role="list"><li class="tg">$15M TCV</li><li class="tg">ANZ Launch</li><li class="tg">90% Compliance</li></ul></li>
+<li class="pr ft rv"><span class="prod-badge">Production · Not a Pilot</span><p class="pt">Production · GenAI · Verizon India</p><h3 class="ptt">GenAI Agent Productivity Platform</h3><p class="pd2">One of the larger production GenAI deployments in Indian telecom. Built on LLMs and Agentic AI — 2,000+ daily users, 35% AHT reduction, 85%+ confidence scores. Shipped. Adopted. Continuously improving.</p><ul class="tl" role="list"><li class="tg">↓ 35% AHT</li><li class="tg">85%+ Confidence</li><li class="tg">LLMs · Agentic · RAG</li><li class="tg">2,000+ Users/Day</li></ul></li>
+<li class="pr rv"><span class="prod-badge">Production · $15M TCV · CBA Sydney</span><p class="pt">Fintech · Digital Banking · HCL / CBA</p><h3 class="ptt">$15M Green Loan Digital Banking Product</h3><p class="pd2">E2E delivery for Australia's renewable energy households. Onsite in Australia ~1 year. 90% onboarding compliance, 40% incident reduction.</p><ul class="tl" role="list"><li class="tg">$15M TCV</li><li class="tg">CBA Launch</li><li class="tg">90% Compliance</li></ul></li>
 <li class="pr rv"><p class="pt">Personal Build · Agentic AI · In Progress</p><h3 class="ptt">FeatureIQ — Agentic Competitor Intelligence</h3><p class="pd2">Autonomously tracks competitor product updates and market signals. Built on Claude API and agentic workflows. Stack: Python, Supabase, Next.js, Vercel.</p><ul class="tl" role="list"><li class="tg">Agentic AI</li><li class="tg">Claude API</li><li class="tg">In Progress</li></ul></li>
 <li class="pr rv"><p class="pt">Personal Build · AI Finance · Live</p><h3 class="ptt">WealthTracker — AI Finance Dashboard</h3><p class="pd2">India-specific finance dashboard — NSE/BSE tracking, IPO alerts, AI-generated insights, AES-encrypted storage. Built independently.</p><ul class="tl" role="list"><li class="tg">AI Insights</li><li class="tg">NSE/BSE</li><li class="tg">Chart.js</li></ul></li>
-<li class="pr rv"><p class="pt">Telecom · Platform · Verizon</p><h3 class="ptt">Legacy-to-Pega CX Transformation</h3><p class="pd2">Led migration of Verizon India's legacy CX platform to Pega — 30% efficiency gains, minimal operational disruption.</p><ul class="tl" role="list"><li class="tg">↑ 30% Efficiency</li><li class="tg">Pega Migration</li></ul></li>
-<li class="pr rv"><p class="pt">Payments · Fintech · FIS / Citi</p><h3 class="ptt">Citi Payments Product Delivery at FIS Global</h3><p class="pd2">Direct Citi stakeholder engagement on debit card processing, ATM switching, Visa/Mastercard/CUP certifications, and Falcon Fraud Navigator.</p><ul class="tl" role="list"><li class="tg">Citi Client</li><li class="tg">Visa/MC/CUP</li><li class="tg">Falcon Fraud Nav.</li></ul></li>
+<li class="pr rv"><span class="prod-badge">Production · 30% Efficiency Gain</span><p class="pt">Telecom · Platform · Verizon</p><h3 class="ptt">Legacy-to-Pega CX Transformation</h3><p class="pd2">Led migration of Verizon India's legacy CX platform to Pega — 30% efficiency gains, minimal operational disruption.</p><ul class="tl" role="list"><li class="tg">↑ 30% Efficiency</li><li class="tg">Pega Migration</li></ul></li>
+<li class="pr rv"><span class="prod-badge">Production · Citi Direct Client</span><p class="pt">Payments · Fintech · FIS / Citi</p><h3 class="ptt">Citi Payments Product Delivery at FIS Global</h3><p class="pd2">Direct Citi stakeholder engagement on debit card processing, ATM switching, Visa/Mastercard/CUP certifications, and Falcon Fraud Navigator.</p><ul class="tl" role="list"><li class="tg">Citi Client</li><li class="tg">Visa/MC/CUP</li><li class="tg">Falcon Fraud Nav.</li></ul></li>
 </ul></div></section>
 <section id="certifications" class="sec seca" aria-labelledby="ce-h"><div class="con"><header class="shd"><p class="ey">Credentials</p><h2 id="ce-h" class="st">Certifications &amp; Awards</h2></header>
 <ul class="cg" role="list">
@@ -376,9 +570,45 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 <section id="mentoring" class="sec" aria-labelledby="me-h"><div class="con"><header class="shd"><p class="ey">Leadership</p><h2 id="me-h" class="st">Mentoring &amp; Thought Leadership</h2></header>
 <div class="mb2 rv"><h3 class="mt2">🌱 Building the Next Generation of AI Product Leaders</h3><p class="md">I mentor emerging product professionals — helping them think bigger, ship production AI faster, and build with responsibility. If you're building AI products that need to work in the real world — not just demos — let's connect.</p><ul class="mv2" role="list"><li class="mvi">Production-First Mindset</li><li class="mvi">Hypothesis-Driven Strategy</li><li class="mvi">Responsible AI</li><li class="mvi">Execution Excellence</li><li class="mvi">Cross-Domain Depth</li></ul></div>
 <ul class="tsg" role="list">
-<li class="tsc rv"><blockquote class="tq"><p>"Arun's approach to AI product validation is unique — he bridges prompt engineering theory and real-world business outcomes in a way most PMs can't."</p></blockquote><footer><p class="tname">Product Manager</p><p class="trole">AI Startup · Bangalore</p></footer></li>
-<li class="tsc rv"><blockquote class="tq"><p>"The masterclass on Agentic AI and OKR design changed how our team thinks about measuring AI quality. Immediately actionable, not just theory."</p></blockquote><footer><p class="tname">Associate PM</p><p class="trole">SaaS Company · Chennai</p></footer></li>
-<li class="tsc rv"><blockquote class="tq"><p>"His production-scale delivery record makes his mentorship genuinely valuable. He invests in your growth, not just the output."</p></blockquote><footer><p class="tname">Senior BA</p><p class="trole">BFSI · Hyderabad</p></footer></li>
+<li class="tsc tsc-verified rv">
+  <div class="tsc-li-badge">LinkedIn Recommendation</div>
+  <blockquote class="tq"><p>"He has a rare ability to break down complex concepts with such clarity and fluency that the message lands the first time, every time. His thoroughness and attention to detail set a quiet but consistent quality standard. Anyone who gets to work with him is fortunate."</p></blockquote>
+  <footer><div class="tsc-attr">
+    <div class="tsc-avatar-img" style="background:linear-gradient(135deg,#0077B5,#00A0DC)">SS</div>
+    <div>
+      <p class="tname">Sharmili Sureshbabu</p>
+      <p class="trole">Senior BA → PM · Lending &amp; Mortgages · APAC &amp; Indian Banking · SAFe POPM · AI-Fluent</p>
+      <p class="tsc-rel">Worked with Arun on the same team · June 2026</p>
+      <a class="tsc-link" href="https://linkedin.com/in/ts-arun" target="_blank" rel="noopener noreferrer">View recommendation on LinkedIn</a>
+    </div>
+  </div></footer>
+</li>
+<li class="tsc tsc-verified rv">
+  <div class="tsc-li-badge">LinkedIn Recommendation · Direct Manager</div>
+  <blockquote class="tq"><p>"Arun is meticulous and wishes to take new responsibilities. He constantly thrives to introduce new methods in his way of working. He always treats his peers, stakeholders and clients fairly and doesn't think twice to do the right thing. He has handled and excelled multiple areas like Solutions BA, Project management, and Agile Product Owner."</p></blockquote>
+  <footer><div class="tsc-attr">
+    <div class="tsc-avatar-img" style="background:linear-gradient(135deg,#6B4FBB,#9B7FE8)">RK</div>
+    <div>
+      <p class="tname">Ranjani Krishnamoorthy</p>
+      <p class="trole">Product Professional · Worldpay · Pragmatic Certified PM</p>
+      <p class="tsc-rel">Ranjani managed Arun directly · August 2021</p>
+      <a class="tsc-link" href="https://linkedin.com/in/ts-arun" target="_blank" rel="noopener noreferrer">View recommendation on LinkedIn</a>
+    </div>
+  </div></footer>
+</li>
+<li class="tsc tsc-verified rv">
+  <div class="tsc-li-badge">LinkedIn Recommendation</div>
+  <blockquote class="tq"><p>"Arun has always been a constant source of inspiration. He has a unique ability to approach problems with the right mindset and work toward effective solutions, which sets him apart. His thirst for knowledge, drive to keep learning, and commitment to teamwork are highly commendable."</p></blockquote>
+  <footer><div class="tsc-attr">
+    <div class="tsc-avatar-img" style="background:linear-gradient(135deg,#0F9D58,#34A853)">VS</div>
+    <div>
+      <p class="tname">Vishnupriya Srinivasan</p>
+      <p class="trole">Product Owner · SAFe 6.0 POPM · Automotive &amp; Telecom · Agile Delivery</p>
+      <p class="tsc-rel">Worked with Arun on the same team · September 2025</p>
+      <a class="tsc-link" href="https://linkedin.com/in/ts-arun" target="_blank" rel="noopener noreferrer">View recommendation on LinkedIn</a>
+    </div>
+  </div></footer>
+</li>
 </ul></div></section>
 <section id="contact" class="sec seca" aria-labelledby="co-h"><div class="con"><header class="shd"><p class="ey">Let's Connect</p><h2 id="co-h" class="st">Open to Global Opportunities</h2><p class="ss">Actively exploring Senior AI PM / Director of Product / Head of AI roles at AI-first companies worldwide.</p></header>
 <div class="ctg2">
@@ -389,7 +619,8 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 <a class="ci2" href="https://github.com/tsarun" target="_blank" rel="noopener noreferrer"><span class="cii">🐙</span><div><small class="cil">GitHub</small><strong class="civ">github.com/tsarun</strong></div></a>
 <div class="ci2"><span class="cii">📍</span><div><small class="cil">Location</small><strong class="civ">Chennai, India · Open to Relocation</strong></div></div>
 <div class="ci2"><span class="cii">🗣️</span><div><small class="cil">Languages</small><strong class="civ">English · Tamil</strong></div></div>
-<div class="rb">
+<div class="rb rb-highlight">
+<div class="rb-badge">Ready to download</div>
 <h3>📄 Download Resume</h3>
 <p>Senior AI Product Manager · GenAI · Agentic AI · LLM · RAG<br>Full 15-year history · All certifications &amp; metrics</p>
 <div class="dlr">
@@ -401,11 +632,33 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 </div>
 </address>
 <aside class="ot">
-<div class="ots"><h3 class="oth">🌏 Target Markets</h3><ul class="otl" role="list"><li class="oti">🇮🇳 India — AI-First</li><li class="oti">🇸🇬 Singapore / SEA</li><li class="oti">🇦🇪 UAE / Dubai</li><li class="oti">🇩🇪 Germany</li><li class="oti">🌐 Remote Global</li></ul></div>
-<div class="ots"><h3 class="oth">🎯 Target Roles</h3><ul class="otl" role="list"><li class="oti">Senior AI Product Manager</li><li class="oti">Principal PM</li><li class="oti">Director of Product — AI</li><li class="oti">Head of AI Products</li><li class="oti">AVP / VP Product</li></ul></div>
-<div class="ots"><h3 class="oth">🏢 Domain Fit</h3><ul class="otl" role="list"><li class="oti">GenAI / Agentic AI Platforms</li><li class="oti">LLM-Powered Products</li><li class="oti">Fintech / Payments</li><li class="oti">SaaS / B2B Enterprise</li></ul></div>
-<div class="ots"><h3 class="oth">💰 Compensation</h3><ul class="otl" role="list"><li class="oti">India: ₹75LPA+</li><li class="oti">UAE: AED 50K+ monthly</li><li class="oti">Remote: $180K+</li></ul></div>
-<div class="ots"><h3 class="oth">🎓 Education</h3><ul class="otl" role="list"><li class="oti">B.E. Computer Science</li><li class="oti">Anna University · 2010</li></ul></div>
+  <div class="looking-for-card">
+    <div class="lf-header">
+      <div class="lf-dot"></div>
+      <span class="lf-title">What I'm looking for</span>
+    </div>
+    <div class="lf-row">
+      <span class="lf-label">Role</span>
+      <span class="lf-value">Senior AI PM · Principal PM · Director of Product · Head of AI</span>
+    </div>
+    <div class="lf-row">
+      <span class="lf-label">Where</span>
+      <span class="lf-value">🇮🇳 India &nbsp;·&nbsp; 🇸🇬 Singapore &nbsp;·&nbsp; 🇦🇪 UAE &nbsp;·&nbsp; 🇩🇪 Germany &nbsp;·&nbsp; 🌐 Remote</span>
+    </div>
+    <div class="lf-row">
+      <span class="lf-label">Domain</span>
+      <span class="lf-value">GenAI · Agentic AI · LLM Platforms · Fintech · Enterprise SaaS</span>
+    </div>
+    <div class="lf-row">
+      <span class="lf-label">Notice</span>
+      <span class="lf-value">Available immediately · Open to relocation</span>
+    </div>
+    <div class="lf-row">
+      <span class="lf-label">Education</span>
+      <span class="lf-value">B.E. Computer Science · Anna University 2010</span>
+    </div>
+    <a href="https://calendar.app.google/yaWXwd3GwSFk7QcL6" target="_blank" rel="noopener noreferrer" class="lf-cta">📅 Let's talk — book 30 minutes</a>
+  </div>
 </aside>
 </div></div></section>
 
@@ -459,13 +712,13 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 
       <div class="faqi rv" role="listitem">
         <button class="faqq" type="button" aria-expanded="false" aria-controls="faq4">
-          Tell me about the $15M ANZ Green Loan project
+          Tell me about the $15M CBA Green Loan project
           <span class="faqic" aria-hidden="true">+</span>
         </button>
         <div class="faqa" id="faq4" role="region">
           <div class="faqac">
-            At HCL Technologies I was the Product Owner for a <strong>$15M TCV digital lending product</strong> for ANZ Bank's Australian market — enabling green energy loan applications for 95% of Australian renewable energy households. I was onsite in Melbourne for ~1 year embedded with ANZ stakeholders. Delivered <strong>90% compliance adherence</strong> in customer onboarding and a <strong>40% reduction in incident tickets</strong> post-launch. It's my clearest example of owning a product from discovery through adoption in a highly regulated market with direct client accountability.
-            <div class="faqtag"><span class="ft3">$15M TCV</span><span class="ft3">Digital Banking</span><span class="ft3">ANZ Market</span><span class="ft3">Onsite Delivery</span></div>
+            At HCL Technologies I was the Product Owner for a <strong>$15M TCV digital lending product</strong> for Commonwealth Bank of Australia (CBA) — enabling green energy loan applications for 95% of Australian renewable energy households. I was onsite in Sydney for ~1 year embedded with CBA (Commonwealth Bank of Australia) stakeholders. Delivered <strong>90% compliance adherence</strong> in customer onboarding and a <strong>40% reduction in incident tickets</strong> post-launch. It's my clearest example of owning a product from discovery through adoption in a highly regulated market with direct client accountability.
+            <div class="faqtag"><span class="ft3">$15M TCV</span><span class="ft3">Digital Banking</span><span class="ft3">CBA · Sydney</span><span class="ft3">Onsite Delivery</span></div>
           </div>
         </div>
       </div>
@@ -477,7 +730,7 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
         </button>
         <div class="faqa" id="faq5" role="region">
           <div class="faqac">
-            Three things that are genuinely rare in combination. <strong>Production scale</strong> — most AI PM portfolios are pilots or MVPs. I have 2,000+ daily users and 3 measurable outcomes in full production. <strong>Practitioner depth</strong> — I write system prompts, design eval frameworks, and debate model selection with engineers. I'm not a PM who manages AI from a distance. <strong>Cross-domain breadth</strong> — Fintech payments (Citi/FIS), digital banking (ANZ/HCL), and telecom AI (Verizon) across India, Australia, US, Philippines, and Singapore. That combination is unusual and directly relevant to enterprise AI roles.
+            Three things that are genuinely rare in combination. <strong>Production scale</strong> — most AI PM portfolios are pilots or MVPs. I have 2,000+ daily users and 3 measurable outcomes in full production. <strong>Practitioner depth</strong> — I write system prompts, design eval frameworks, and debate model selection with engineers. I'm not a PM who manages AI from a distance. <strong>Cross-domain breadth</strong> — Fintech payments (Citi/FIS), digital banking (CBA/HCL), and telecom AI (Verizon) across India, Australia, US, Philippines, and Singapore. That combination is unusual and directly relevant to enterprise AI roles.
             <div class="faqtag"><span class="ft3">Production Scale</span><span class="ft3">Prompt Engineering</span><span class="ft3">Cross-Domain</span><span class="ft3">15+ Years</span></div>
           </div>
         </div>
@@ -496,11 +749,69 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
         </div>
       </div>
 
+
+      <div class="faqi rv" role="listitem">
+        <button class="faqq" type="button" aria-expanded="false" aria-controls="faq7">
+          How do you manage stakeholders across engineering, ops, and leadership?
+          <span class="faqic" aria-hidden="true">+</span>
+        </button>
+        <div class="faqa" id="faq7" role="region">
+          <div class="faqac">
+            I use a <strong>three-layer stakeholder model</strong>. Engineering teams need clarity on what problem we're solving and why — I give them decision context, not just tickets. Operations teams need confidence that the AI won't embarrass them in front of customers — I give them guardrails, escalation paths, and clear uncertainty signals. Leadership needs business outcomes, not AI jargon — I translate every feature into AHT, confidence score, or cost impact. At Verizon this meant weekly standups with ML engineers, monthly readouts with ops leads, and quarterly OKR reviews with the VP layer. The throughline: <strong>every stakeholder group gets the same truth in their language.</strong>
+            <div class="faqtag"><span class="ft3">Stakeholder Management</span><span class="ft3">OKRs</span><span class="ft3">Cross-functional</span><span class="ft3">Enterprise AI</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faqi rv" role="listitem">
+        <button class="faqq" type="button" aria-expanded="false" aria-controls="faq8">
+          Are you genuinely open to UAE or Singapore — or is that just on your resume?
+          <span class="faqic" aria-hidden="true">+</span>
+        </button>
+        <div class="faqa" id="faq8" role="region">
+          <div class="faqac">
+            Genuinely open — not just listed as a keyword. I have prior onsite experience across <strong>Australia, Philippines, Singapore, and the US</strong>, so international relocation is not new territory for me. UAE (Dubai/Abu Dhabi) appeals because of the density of AI-first enterprise transformation happening there right now — fintech, banking, and government AI mandates. Singapore/SEA appeals because I already understand the market from my time there with Betamonks. I'm Chennai-based with a valid passport and no visa complications for most markets. If the role is right, the geography is secondary. <strong>I've moved before and I'll move again for the right opportunity.</strong>
+            <div class="faqtag"><span class="ft3">UAE · Dubai</span><span class="ft3">Singapore · SEA</span><span class="ft3">Relocation Ready</span><span class="ft3">International Experience</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faqi rv" role="listitem">
+        <button class="faqq" type="button" aria-expanded="false" aria-controls="faq9">
+          What does your first 90 days look like in a new role?
+          <span class="faqic" aria-hidden="true">+</span>
+        </button>
+        <div class="faqa" id="faq9" role="region">
+          <div class="faqac">
+            <strong>Days 1–30:</strong> Listen, map, and validate. I spend the first month understanding the actual problem — not the stated problem. I interview engineers, ops leads, customers, and the data. I audit what's been tried and why it failed. I don't propose solutions in week one. <strong>Days 31–60:</strong> Hypotheses and priorities. I identify the highest-leverage AI problem the team can solve in 90 days. I draft an OKR framework and get alignment from all stakeholder layers. <strong>Days 61–90:</strong> Deliver something measurable. Even if it's small, I want to ship something real and measure it. Pilots are fine in month three; they shouldn't still be running at month twelve. By day 90 I want a clear before/after metric, a backlog the team trusts, and a stakeholder who's already seen value.
+            <div class="faqtag"><span class="ft3">30-60-90 Plan</span><span class="ft3">OKRs</span><span class="ft3">Stakeholder Alignment</span><span class="ft3">Production First</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faqi rv" role="listitem">
+        <button class="faqq" type="button" aria-expanded="false" aria-controls="faq10">
+          How do you drive AI adoption in organisations that are skeptical or resistant?
+          <span class="faqic" aria-hidden="true">+</span>
+        </button>
+        <div class="faqa" id="faq10" role="region">
+          <div class="faqac">
+            Skepticism is <strong>the right starting point</strong> — I never fight it. At Verizon, agent adoption wasn't a given. Enterprise employees had tried chatbots that gave wrong answers. Trust had to be earned. My approach: start with the queries where the AI is <em>most likely to be right</em> — high-frequency, well-documented, low-stakes. Win there first. Then expand the envelope slowly, with every rollout gated on confidence score data. Build in explicit uncertainty signals — "I'm not sure, please verify" is more trustworthy than a confident wrong answer. And critically: <strong>close the feedback loop fast</strong>. If an agent flags a bad answer, we fix it within 48 hours and tell them we fixed it. That single behaviour — acknowledge, fix, communicate — drove more adoption than any feature we shipped.
+            <div class="faqtag"><span class="ft3">AI Adoption</span><span class="ft3">Change Management</span><span class="ft3">Trust Building</span><span class="ft3">Feedback Loops</span></div>
+          </div>
+        </div>
+      </div>
+
+    <div class="faq-cta rv">
+      <p>Have a specific question not covered here? I reply within 24 hours.</p>
+      <a class="btn bs" href="mailto:tsarun1989@gmail.com?subject=Question%20from%20your%20portfolio&body=Hi%20Arun%2C%0A%0AI%20have%20a%20question%20about%20your%20experience%3A%0A%0A" style="display:inline-flex">📧 Ask me directly</a>
+    </div>
+
     </div>
   </div>
 </section>
 </main>
-<footer class="ft2" role="contentinfo"><div class="con"><p class="fc">© 2025 Arun TS · Senior AI Product Manager | GenAI &amp; Agentic AI · Chennai, India</p><p class="fs">Building AI products that enterprises actually adopt. 🤖</p></div></footer>
+<footer class="ft2" role="contentinfo"><div class="con"><p class="fc">© 2025 Arun TS · Senior AI Product Manager | GenAI · Agentic AI · LLM · Production Scale · Chennai, India</p><p class="fs">Most AI PMs manage pilots. I manage production. <a href="mailto:tsarun1989@gmail.com" style="color:var(--bl2)">Let's talk →</a></p></div></footer>
 <div class="fw" id="fabW">
 <nav class="fm" id="fabM" role="menu" aria-label="Contact options" hidden>
 <a class="fo" href="mailto:tsarun1989@gmail.com" role="menuitem">📧 tsarun1989@gmail.com</a>
@@ -510,7 +821,7 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 <button class="fb" id="fabB" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="fabM" aria-label="Connect with Arun"><span id="fabI">✉️</span><span class="fab-tip">Connect</span></button>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script>
+<script charset="utf-8">
 (function(){
 'use strict';
 
@@ -518,7 +829,7 @@ body.mnav-open .fw,body.mnav-open .ppb{opacity:0;pointer-events:none}
 function typewriter(){
   var el=document.getElementById('tw');
   if(!el)return;
-  var ph=['Senior AI PM · GenAI · Agentic AI · LLM · RAG','Production AI · 2,000+ Daily Users · Enterprise Scale','Fintech · Telecom · Banking · ANZ · US · SEA','Anthropic AI Fluency · SAFe 6 POPM · McKinsey'];
+  var ph=['Senior AI PM | GenAI | Agentic AI | LLM | RAG','Production AI | 2,000+ Daily Users | Enterprise Scale','Fintech | Telecom | Banking | CBA | US | SEA','Anthropic AI Fluency | SAFe 6 POPM | McKinsey'];
   if(window.matchMedia('(prefers-reduced-motion:reduce)').matches){el.textContent=ph[0];return;}
   var pi=0,ci=0,del=false;
   (function t(){var c=ph[pi];if(!del){el.textContent=c.slice(0,++ci);if(ci===c.length){del=true;setTimeout(t,2400);return;}setTimeout(t,55);}else{el.textContent=c.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%ph.length;setTimeout(t,400);return;}setTimeout(t,24);}})();
@@ -528,9 +839,19 @@ function typewriter(){
 function reveal(){
   var items=document.querySelectorAll('.rv');
   if(!items.length)return;
-  var o=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target);}});},{threshold:.04,rootMargin:"0px 0px -40px 0px"});
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('on');});return;
+  }
+  var o=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('on');o.unobserve(e.target);}});},{threshold:0,rootMargin:"0px 0px -20px 0px"});
   items.forEach(function(el){o.observe(el);});
+  setTimeout(function(){
+    items.forEach(function(el){
+      var r=el.getBoundingClientRect();
+      if(r.top<window.innerHeight+100){el.classList.add('on');o.unobserve(el);}
+    });
+  },100);
 }
+
 
 /* NAV */
 function nav(){
@@ -624,13 +945,13 @@ function buildPremium(){
   y=54;
 
   sh('PROFESSIONAL SUMMARY');
-  para('Senior AI Product Manager with 15+ years of experience building and scaling GenAI, LLM, and Agentic AI products at enterprise scale across Fintech, Telecom, and Banking. Currently leading a production-grade GenAI Agent Productivity Platform at Verizon India serving 2,000+ daily enterprise users with 35% AHT reduction, 18% response quality improvement, and 85%+ user confidence scores in full production - not a pilot. Previously delivered a $15M TCV Green Loan digital banking product for the ANZ market at HCL Technologies. At FIS Global, managed Citi card and payments product delivery working directly with Citi stakeholders. Independently built WealthTracker, an AI-enabled personal finance dashboard. Anthropic AI Fluency Certified. CSPO and SAFe 6 POPM certified. McKinsey Leadership Accelerator alumnus.');
+  para('Senior AI Product Manager with 15+ years of experience building and scaling GenAI, LLM, and Agentic AI products at enterprise scale across Fintech, Telecom, and Banking. Currently leading a production-grade GenAI Agent Productivity Platform at Verizon India serving 2,000+ daily enterprise users with 35% AHT reduction, 18% response quality improvement, and 85%+ user confidence scores in full production - not a pilot. Previously delivered a $15M TCV Green Loan digital banking product for Commonwealth Bank of Australia (CBA) at HCL Technologies. At FIS Global, managed Citi card and payments product delivery working directly with Citi stakeholders. Independently built WealthTracker, an AI-enabled personal finance dashboard. Anthropic AI Fluency Certified. CSPO and SAFe 6 POPM certified. McKinsey Leadership Accelerator alumnus.');
   y+=2;
   sh('CORE VALUE PROPOSITION');
   bul('End-to-end GenAI product ownership from 0 to 1 incubation to enterprise-scale deployment with 2,000+ daily active users');
   bul('Hands-on AI fluency across LLMs, Agentic AI, RAG architecture, and prompt engineering - practitioner, not just PM');
   bul('Direct Citi client experience at FIS Global - deep familiarity with Citi payments infrastructure and operating model');
-  bul('Rare cross-industry depth: Fintech, Banking, Telecom, Payments, Digital Lending across India, ANZ, US, and Southeast Asia');
+  bul('Rare cross-industry depth: Fintech, Banking, Telecom, Payments, Digital Lending across India, Australia (CBA), US, and Southeast Asia');
   bul('Self-driven builder - independently developed WealthTracker, an AI-enabled personal finance dashboard');
   bul('Certified: Anthropic AI Fluency, Claude 101, SAFe 6 POPM, CSPO, McKinsey Leadership Accelerator');
   y+=2;
@@ -649,21 +970,21 @@ function buildPremium(){
   bul('Drove Pega CX migration; managed 3+ agile squads using SAFe from discovery through delivery');
   stk('Conversational AI, NLP, Chatbots, Pega, SAFe Agile, Jira');
   y+=1;
-  rh('Product Owner - Digital Banking','HCL Technologies, Chennai and Melbourne, Australia (Onsite)','2016 - 2021');
-  bul('Delivered $15M TCV Green Loan digital banking product for the Australian market serving 95% of renewable energy households');
-  bul('Worked onsite in Australia for close to a year embedded with ANZ banking client stakeholders');
+  rh('Product Owner - Digital Banking','HCL Technologies, Chennai, India and Sydney, Australia (Onsite - CBA)','2018 - 2021');
+  bul('Delivered $15M TCV Green Loan digital banking product for Commonwealth Bank of Australia (CBA) serving 95% of Australian renewable energy households');
+  bul('Worked onsite in Sydney for ~1 year embedded with Commonwealth Bank of Australia (CBA) stakeholders');
   bul('Achieved 90% compliance in customer onboarding; reduced incident tickets by 40% post-launch');
-  stk('Digital Banking, Core Banking, HCL Engine, Green Finance, ANZ Market, Agile, Jira');
+  stk('Digital Banking, Core Banking, HCL Engine, Green Finance, CBA · Sydney, Agile, Jira');
   y+=1;
-  rh('Product Implementation Analyst - Payments and Cards','FIS Global, Chennai, Singapore, and US','2014 - 2016');
+  rh('Product Implementation Analyst - Payments and Cards','FIS Global, Chennai, Singapore, and US','2016 - 2018');
   bul('Managed Citi card and payments product delivery - direct Citi stakeholder engagement on debit card processing and ATM switching');
   bul('Delivered Visa, Mastercard, and China UnionPay (CUP) certifications; worked on Falcon Fraud Navigator');
   stk('Payments, ATM Switching, Visa, Mastercard, CUP, Falcon Fraud Navigator, Citi Payments');
   y+=1;
-  rh('Implementation Manager','Betamonks Technology, Philippines and Singapore (Onsite)','2012 - 2014');
-  bul('Implemented Contactless EMV cards and cardless ATM transactions across Southeast Asia - early EMV contactless rollout');
+  rh('Implementation Manager','Betamonks Technology, Philippines and Malaysia (Onsite) · Singapore (Remote)','2014 - 2016');
+  bul('Implemented Contactless EMV cards and cardless ATM transactions — Onsite Philippines and Malaysia, Singapore remote. Early EMV contactless rollout in the region.');
   y+=1;
-  rh('Software Engineer and Requirement Analyst  |  Support Engineer','Zylog Systems, Chennai  |  Suntech Systems, Chennai','2010 - 2012');
+  rh('Software Engineer and Requirement Analyst  |  Support Engineer','Zylog Systems, Chennai  |  Suntech Systems, Chennai','2010 - 2014');
   bul('Core banking and cheque truncation implementations. L1 support and requirement analysis - foundation in banking technology.');
   y+=2;
   sh('PERSONAL PROJECTS AND SIDE BUILDS');
@@ -676,16 +997,16 @@ function buildPremium(){
   kw('Leadership','Cross-functional Leadership, Stakeholder Management, C-Suite Alignment, Team Leadership, Agile Coaching, SAFe, CSPO, Scrum, Product Operations');
   kw('Domains','Fintech, Banking, Telecom, BFSI, Digital Banking, Payments, Green Finance, Enterprise AI, Customer Experience, ATM Processing, Card Processing');
   kw('Tech','Python, SQL, Supabase, Next.js, Claude API, Chart.js, Pega, HCL Core Banking, Jira, Confluence, Miro');
-  kw('Markets','India, ANZ (Australia and New Zealand), Singapore, United States, Philippines, Southeast Asia');
+  kw('Markets','India, Australia (CBA · Sydney), Singapore, United States, Philippines, Malaysia, Southeast Asia');
   y+=2;
   sh('CERTIFICATIONS AND EDUCATION');
   CERTS.forEach(function(c){chk();doc.setFontSize(8);doc.setTextColor(60,120,230);doc.text('-',M,y);doc.setTextColor(20,26,50);doc.setFont('helvetica','normal');var l=doc.splitTextToSize(c,TW-5);doc.text(l,M+5,y);y+=l.length*4.4+1.2;});
   y+=2;
   sh('RECOGNITION AND ACHIEVEMENTS');
   bul('Delivered one of the larger production GenAI deployments in Indian telecom - 2,000+ daily enterprise users at Verizon India');
-  bul('$15M TCV digital banking product for the Australian market - flagship Green Loan launch for ANZ renewable energy households');
+  bul('$15M TCV digital banking product for the Australian market - flagship Green Loan launch for Commonwealth Bank of Australia (CBA)');
   bul('Direct Citi client delivery at FIS Global - inside knowledge of Citi payments infrastructure and operating model');
-  bul('Onsite international delivery across Australia, Philippines, Singapore, and United States - rare cross-geography execution record');
+  bul('Onsite international delivery across Australia (CBA · Sydney), Philippines, Malaysia, Singapore, and United States — rare cross-geography execution record');
   bul('Anthropic AI Fluency certified - among a small cohort of Anthropic-certified AI practitioners globally');
   bul('McKinsey Leadership Accelerator alumnus - selected for executive leadership development programme');
   return doc;
@@ -711,7 +1032,7 @@ function buildATS(){
   doc.setDrawColor(0,0,0);doc.setLineWidth(.4);doc.line(M,y,W-M,y);y+=6;
 
   sh('PROFESSIONAL SUMMARY');
-  para('Senior AI Product Manager with 15+ years of experience building and scaling GenAI, LLM, and Agentic AI products at enterprise scale across Fintech, Telecom, and Banking. Currently leading a production-grade GenAI Agent Productivity Platform at Verizon India serving 2,000+ daily enterprise users with 35% AHT reduction, 18% response quality improvement, and 85%+ user confidence scores in full production. Previously delivered a $15M TCV Green Loan digital banking product for the ANZ market at HCL Technologies. At FIS Global, managed Citi card and payments product delivery working directly with Citi stakeholders. Independently built WealthTracker, an AI-enabled personal finance dashboard. Anthropic AI Fluency Certified. CSPO and SAFe 6 POPM certified. McKinsey Leadership Accelerator alumnus.');
+  para('Senior AI Product Manager with 15+ years of experience building and scaling GenAI, LLM, and Agentic AI products at enterprise scale across Fintech, Telecom, and Banking. Currently leading a production-grade GenAI Agent Productivity Platform at Verizon India serving 2,000+ daily enterprise users with 35% AHT reduction, 18% response quality improvement, and 85%+ user confidence scores in full production. Previously delivered a $15M TCV Green Loan digital banking product for Commonwealth Bank of Australia (CBA) at HCL Technologies. At FIS Global, managed Citi card and payments product delivery working directly with Citi stakeholders. Independently built WealthTracker, an AI-enabled personal finance dashboard. Anthropic AI Fluency Certified. CSPO and SAFe 6 POPM certified. McKinsey Leadership Accelerator alumnus.');
   y+=2;
   sh('WORK EXPERIENCE');
   rh('AI Product Manager - GenAI Agent Platform','Verizon India, Chennai, India','Oct 2024 - Present');
@@ -726,19 +1047,19 @@ function buildATS(){
   bul('Defined conversational flows, NLU improvement strategies, intent recognition enhancements, and fallback handling with NLP and ML teams');
   bul('Drove legacy CX platform migration to Pega; managed 3+ agile squads using SAFe from discovery through delivery');
   y+=1;
-  rh('Product Owner - Digital Banking','HCL Technologies, Chennai, India and Melbourne, Australia (Onsite)','2016 - 2021');
-  bul('Delivered $15M TCV Green Loan digital banking product for the Australian market serving 95% of Australian renewable energy households');
-  bul('Worked onsite in Australia for close to a year embedded with ANZ banking client stakeholders');
+  rh('Product Owner - Digital Banking','HCL Technologies, Chennai, India and Sydney, Australia (Onsite - CBA)','2018 - 2021');
+  bul('Delivered $15M TCV Green Loan digital banking product for Commonwealth Bank of Australia (CBA) serving 95% of Australian renewable energy households');
+  bul('Worked onsite in Sydney for ~1 year embedded with Commonwealth Bank of Australia (CBA) stakeholders');
   bul('Achieved 90% compliance adherence in customer onboarding; reduced incident tickets by 40% post-launch');
   y+=1;
-  rh('Product Implementation Analyst - Payments and Cards','FIS Global, Chennai, Singapore, and US','2014 - 2016');
+  rh('Product Implementation Analyst - Payments and Cards','FIS Global, Chennai, Singapore, and US','2016 - 2018');
   bul('Managed Citi card and payments product delivery - worked directly with Citi stakeholders on debit card processing and ATM switching');
   bul('Delivered Visa, Mastercard, and China UnionPay (CUP) certification projects; worked on Falcon Fraud Navigator fraud detection platform');
   y+=1;
-  rh('Implementation Manager','Betamonks Technology, Philippines and Singapore (Onsite)','2012 - 2014');
-  bul('Implemented Contactless EMV cards and cardless ATM transactions for banking clients across Southeast Asia');
+  rh('Implementation Manager','Betamonks Technology, Philippines and Malaysia (Onsite) · Singapore (Remote)','2014 - 2016');
+  bul('Implemented Contactless EMV cards and cardless ATM transactions — Onsite in Philippines and Malaysia, remote coverage for Singapore');
   y+=1;
-  rh('Software Engineer and Requirement Analyst  |  Support Engineer','Zylog Systems and Suntech Systems, Chennai','2010 - 2012');
+  rh('Software Engineer and Requirement Analyst  |  Support Engineer','Zylog Systems and Suntech Systems, Chennai','2010 - 2014');
   bul('Core banking and cheque truncation implementations. L1 support and requirement analysis. Foundation in banking technology.');
   y+=2;
   sh('CORE SKILLS AND TECHNOLOGIES');
@@ -747,16 +1068,16 @@ function buildATS(){
   kw('Leadership','Cross-functional Leadership, Stakeholder Management, C-Suite Alignment, Team Leadership, Agile Coaching, SAFe, CSPO, Scrum, Retrospectives, Product Operations');
   kw('Domains','Fintech, Banking, Telecom, BFSI, Digital Banking, Payments, Green Finance, Enterprise AI, Customer Experience, ATM Processing, Card Processing, Fraud Detection');
   kw('Tech','Python, SQL, Supabase, Next.js, Claude API, Chart.js, Pega, HCL Core Banking, Jira, Confluence, Miro');
-  kw('Markets','India, ANZ (Australia and New Zealand), Singapore, United States, Philippines, Southeast Asia');
+  kw('Markets','India, Australia (CBA · Sydney), Singapore, United States, Philippines, Malaysia, Southeast Asia');
   y+=2;
   sh('CERTIFICATIONS AND EDUCATION');
   CERTS.forEach(function(c){chk();doc.setFont('helvetica','normal');doc.setFontSize(8.5);doc.setTextColor(0,0,0);doc.text('-',M,y);var l=doc.splitTextToSize(c,TW-6);doc.text(l,M+6,y);y+=l.length*4.6+1;});
   y+=2;
   sh('ACHIEVEMENTS');
   bul('Delivered one of the larger production GenAI deployments in the Indian telecom space - 2,000+ daily enterprise users at Verizon India');
-  bul('$15M TCV digital banking product for the Australian market - flagship Green Loan launch for ANZ renewable energy households');
+  bul('$15M TCV digital banking product for the Australian market - flagship Green Loan launch for Commonwealth Bank of Australia (CBA)');
   bul('Direct Citi client delivery at FIS Global - inside knowledge of Citi payments infrastructure and operating model');
-  bul('Onsite international delivery across Australia, Philippines, Singapore, and United States');
+  bul('Onsite international delivery across Australia (CBA · Sydney), Philippines, Malaysia, Singapore, and United States');
   bul('Anthropic AI Fluency certified - among a small cohort of Anthropic-certified AI practitioners globally');
   bul('McKinsey Leadership Accelerator alumnus - selected for executive leadership development programme');
   var tot=doc.getNumberOfPages();
@@ -831,7 +1152,26 @@ function faq(){
   });
 }
 
-typewriter();reveal();nav();mnav();fab();pdfs();faq();
+
+/* RECRUITER MODE */
+function recruiterMode(){
+  var btnOn = document.getElementById('rmOn');
+  var btnOff = document.getElementById('rmOff');
+  var bar = document.getElementById('rmBar');
+  var label = document.getElementById('rmLabel');
+  if(!btnOn || !btnOff) return;
+  btnOn.addEventListener('click', function(){
+    document.body.classList.add('recruiter-mode');
+    if(label){ label.innerHTML = '<strong style="color:var(--gr)">✓ Recruiter Mode Active</strong> — showing: Hero · Projects · Contact · FAQ'; }
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  btnOff.addEventListener('click', function(){
+    document.body.classList.remove('recruiter-mode');
+    if(label){ label.innerHTML = '<strong id="rmLabel">👔 Recruiter Mode</strong> — collapse to 60-second summary'; }
+  });
+}
+typewriter();reveal();nav();mnav();fab();pdfs();faq();recruiterMode();
+window.addEventListener('load',function(){reveal();});
 
 })();
 </script>
