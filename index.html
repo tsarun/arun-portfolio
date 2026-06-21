@@ -71,7 +71,8 @@ body.recruiter-mode section#mentoring{display:none!important}
 body.recruiter-mode .trust-bar{display:none}
 body.recruiter-mode .rm-toggle-bar{border-color:rgba(74,222,128,.4);background:rgba(4,14,4,.97)}
 body.recruiter-mode .rm-toggle-label strong{color:var(--gr)}
-body.recruiter-mode main{padding-top:0}
+main{padding-top:58px}
+body.recruiter-mode main{padding-top:106px}
 /* EVIDENCE SKILL CARDS */
 .ev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
 .ev-card{background:var(--card);border:1px solid var(--bdr);border-radius:1.25rem;padding:1.625rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
@@ -414,6 +415,37 @@ html[data-theme="light"] .mnv{background:rgba(255,255,255,.97)}
 html[data-theme="light"] .hn{background:linear-gradient(135deg,#1a2035 0%,#3568d4 60%,var(--bl2) 100%);-webkit-background-clip:text;background-clip:text}
 html[data-theme="light"] .tl-img{filter:grayscale(100%) brightness(.75) opacity(.65)}
 html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) brightness(1) opacity(1)}
+
+/* CASE STUDY LINK ON PROJECT CARD */
+.ptc-link{display:inline-flex;align-items:center;gap:.375rem;margin-top:.875rem;color:var(--bl2);font-size:.78rem;font-weight:700;text-decoration:none;transition:gap .2s}
+.ptc-link:hover{gap:.625rem}
+
+/* CASE STUDY SECTION */
+.cs-meta{display:flex;flex-wrap:wrap;gap:.625rem;margin-bottom:1.5rem}
+.cs-tag{background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.18);color:var(--bl2);font-size:.7rem;font-weight:700;padding:.3rem .75rem;border-radius:var(--rf);letter-spacing:.3px}
+.cs-block{margin-bottom:2.5rem}
+.cs-block:last-child{margin-bottom:0}
+.cs-h{font-size:clamp(1.1rem,1.8vw,1.35rem);font-weight:800;margin-bottom:.875rem;display:flex;align-items:center;gap:.625rem}
+.cs-h::before{content:'';width:4px;height:1.3em;background:linear-gradient(180deg,var(--bl),var(--pu));border-radius:2px;flex-shrink:0}
+.cs-p{color:var(--mu2);font-size:.92rem;line-height:1.85;margin-bottom:1rem}
+.cs-p:last-child{margin-bottom:0}
+.cs-p strong{color:var(--txt)}
+.cs-list{margin:1rem 0;padding-left:0;list-style:none}
+.cs-list li{position:relative;padding-left:1.5rem;margin-bottom:.75rem;color:var(--mu2);font-size:.9rem;line-height:1.7}
+.cs-list li::before{content:'▸';position:absolute;left:0;color:var(--bl2);font-weight:700}
+.cs-list li strong{color:var(--txt)}
+.cs-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin:1.5rem 0}
+.cs-metric{background:var(--card);border:1px solid var(--bdr);border-radius:1rem;padding:1.5rem;text-align:center}
+.cs-metric-label{font-size:.68rem;color:var(--mu);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:.625rem}
+.cs-metric-before{font-size:.85rem;color:var(--mu);text-decoration:line-through;opacity:.7}
+.cs-metric-arrow{color:var(--bl2);font-size:.85rem;margin:.25rem 0}
+.cs-metric-after{font-size:1.6rem;font-weight:800;background:linear-gradient(90deg,var(--bl2),var(--cy));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.cs-caveat{font-size:.75rem;color:var(--mu);font-style:italic;margin-top:1rem;padding:.75rem 1rem;background:rgba(255,255,255,.03);border-left:2px solid var(--bdr2);border-radius:.5rem}
+.cs-path{background:var(--card);border:1px solid var(--bdr);border-radius:1rem;padding:1.25rem 1.5rem;margin-bottom:1rem}
+.cs-path-title{font-size:.82rem;font-weight:800;color:var(--bl2);margin-bottom:.5rem}
+.cs-path-desc{font-size:.85rem;color:var(--mu2);line-height:1.7}
+.cs-back{display:inline-flex;align-items:center;gap:.5rem;color:var(--bl2);font-size:.82rem;font-weight:700;text-decoration:none;margin-top:2rem}
+.cs-back:hover{gap:.75rem}
 </style>
 </head>
 <body>
@@ -587,13 +619,94 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
 <div class="ac"><dt class="al">Quality improvement</dt><dd class="an">18%</dd></div>
 </dl>
 <ul class="pg" role="list">
-<li class="pr ft rv"><span class="prod-badge">Production · Not a Pilot</span><p class="pt">Production · GenAI · Verizon India</p><h3 class="ptt">GenAI Agent Productivity Platform</h3><p class="pd2">One of the larger production GenAI deployments in Indian telecom. Built on LLMs and Agentic AI — 2,000+ daily users, 35% AHT reduction, 85%+ confidence scores. Shipped. Adopted. Continuously improving.</p><ul class="tl" role="list"><li class="tg">↓ 35% AHT</li><li class="tg">85%+ Confidence</li><li class="tg">LLMs · Agentic · RAG</li><li class="tg">2,000+ Users/Day</li></ul></li>
+<li class="pr ft rv"><span class="prod-badge">Production · Not a Pilot</span><p class="pt">Production · GenAI · Enterprise Telecom</p><h3 class="ptt">The Resolution Layer — GenAI Agent Productivity Platform</h3><p class="pd2">One of the larger production GenAI deployments in enterprise telecom. Built on LLMs and Agentic AI — 2,000+ daily users, 35% AHT reduction, first-contact resolution from ~55% to 95%. Shipped. Adopted. Continuously improving.</p><ul class="tl" role="list"><li class="tg">↓ 35% AHT</li><li class="tg">95% Resolution Rate</li><li class="tg">LLMs · Agentic · RAG</li><li class="tg">2,000+ Users/Day</li></ul><a href="#resolution-layer-case-study" class="ptc-link">Read the full case study →</a></li>
 <li class="pr rv"><span class="prod-badge">Production · $15M TCV · CBA Sydney</span><p class="pt">Fintech · Digital Banking · HCL / CBA</p><h3 class="ptt">$15M Green Loan Digital Banking Product</h3><p class="pd2">E2E delivery for Australia's renewable energy households. Onsite in Australia ~1 year. 90% onboarding compliance, 40% incident reduction.</p><ul class="tl" role="list"><li class="tg">$15M TCV</li><li class="tg">CBA Launch</li><li class="tg">90% Compliance</li></ul></li>
 <li class="pr rv"><p class="pt">Personal Build · Agentic AI · In Progress</p><h3 class="ptt">FeatureIQ — Agentic Competitor Intelligence</h3><p class="pd2">Autonomously tracks competitor product updates and market signals. Built on Claude API and agentic workflows. Stack: Python, Supabase, Next.js, Vercel.</p><ul class="tl" role="list"><li class="tg">Agentic AI</li><li class="tg">Claude API</li><li class="tg">In Progress</li></ul></li>
 <li class="pr rv"><p class="pt">Personal Build · AI Finance · Live</p><h3 class="ptt">WealthTracker — AI Finance Dashboard</h3><p class="pd2">India-specific finance dashboard — NSE/BSE tracking, IPO alerts, AI-generated insights, AES-encrypted storage. Built independently.</p><ul class="tl" role="list"><li class="tg">AI Insights</li><li class="tg">NSE/BSE</li><li class="tg">Chart.js</li></ul></li>
 <li class="pr rv"><span class="prod-badge">Production · 30% Efficiency Gain</span><p class="pt">Telecom · Platform · Verizon</p><h3 class="ptt">Legacy-to-Pega CX Transformation</h3><p class="pd2">Led migration of Verizon India's legacy CX platform to Pega — 30% efficiency gains, minimal operational disruption.</p><ul class="tl" role="list"><li class="tg">↑ 30% Efficiency</li><li class="tg">Pega Migration</li></ul></li>
 <li class="pr rv"><span class="prod-badge">Production · Citi Direct Client</span><p class="pt">Payments · Fintech · FIS / Citi</p><h3 class="ptt">Citi Payments Product Delivery at FIS Global</h3><p class="pd2">Direct Citi stakeholder engagement on debit card processing, ATM switching, Visa/Mastercard/CUP certifications, and Falcon Fraud Navigator.</p><ul class="tl" role="list"><li class="tg">Citi Client</li><li class="tg">Visa/MC/CUP</li><li class="tg">Falcon Fraud Nav.</li></ul></li>
 </ul></div></section>
+<section id="resolution-layer-case-study" class="sec" aria-labelledby="cs-h">
+<div class="con">
+<header class="shd rv">
+<p class="ey">Case Study</p>
+<h2 id="cs-h" class="st">Building the Resolution Layer</h2>
+<p class="ss">How a GenAI platform took first-contact resolution from ~55% to 95% — and the judgment calls behind it.</p>
+</header>
+
+<div class="cs-meta rv">
+<span class="cs-tag">Telecom Enterprise</span>
+<span class="cs-tag">GenAI · Agentic AI</span>
+<span class="cs-tag">2,000+ Daily Users</span>
+<span class="cs-tag">Production, Not Pilot</span>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">The Problem: Agents Were the Search Engine</h3>
+<p class="cs-p">At a large telecom enterprise, customer service agents relied on a basic chatbot interface that could <strong>respond</strong>, but couldn't <strong>resolve</strong>. For most real customer questions, the chatbot returned partial or surface-level information — enough to start, never enough to finish. Agents still had to manually check 4–5 separate knowledge bases and internal tools mid-conversation to piece together a complete answer.</p>
+<p class="cs-p">This created a dual pain point that hit both sides of the conversation at once. Agents lost time navigating between systems while a customer waited on the line. Customers experienced the friction directly — repeated "let me check that for you" moments, growing impatience, and visible frustration on calls that should have taken a fraction of the time.</p>
+<p class="cs-p">It wasn't framed internally as just a customer experience problem, or just an agent efficiency problem. It was both — which is part of why it gained the urgency and traction to get built.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">The Approach: One Resolution Layer, Not Another Chatbot</h3>
+<p class="cs-p">Rather than building a better chatbot, the team built a <strong>cognitive layer</strong> that sits between the existing chat interface and the underlying knowledge bases. It queries multiple internal sources in parallel, collates what comes back, and returns one plain-language, complete answer — directly inside the conversation the agent was already having.</p>
+<p class="cs-p">Internally, this was deliberately framed not as <em>"we added AI"</em> but as <em>"we removed a manual step that never needed to exist."</em> The agent's job changed from searching to confirming — read the resolution layer's answer, validate it against the customer's actual need, and move on.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">The Hard Decisions: Knowing When Not to Answer</h3>
+<p class="cs-p">The system needed a way to know its own limits — not through a confidence score, but through two deliberate, rule-based escalation paths built directly into the design:</p>
+
+<div class="cs-path">
+<div class="cs-path-title">Path 1 — Genuinely Unknown</div>
+<div class="cs-path-desc">When no matching information exists across the connected knowledge bases, the system escalates the query to a human with a tracked ticket — rather than guessing or returning a partial answer dressed up as complete.</div>
+</div>
+
+<div class="cs-path">
+<div class="cs-path-title">Path 2 — Not the System's Decision to Make</div>
+<div class="cs-path-desc">Certain categories of requests always route to a human, regardless of whether the system has an answer — plan changes, plan reversals, discount requests, and negotiated trade offers. These are financial and commercial decisions, not informational ones, and the system was scoped deliberately to stay out of them.</div>
+</div>
+
+<p class="cs-p">This distinction mattered more than it might first appear. It separates <strong>"the system doesn't know"</strong> from <strong>"this isn't the system's call"</strong> — a designed scope boundary, not a limitation papered over after the fact.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">A Real Tradeoff: Speed vs. Cleanliness, Under Pressure</h3>
+<p class="cs-p">A new product launch surfaced a data-readiness gap — product details from upstream knowledge bases didn't sync in time for a new offering to be fully represented in the system. The choice was between two paths: wait for a fully engineered, properly tested fix, or ship a fast, pragmatic patch to close the immediate gap.</p>
+<p class="cs-p">The call was made to ship the quick fix — closing the customer-facing gap immediately rather than letting it sit through a longer, more thorough engineering cycle. That decision meant navigating real disagreement with engineering, who reasonably preferred the more careful approach.</p>
+<p class="cs-p">It wasn't a clean win. It was a genuine tradeoff, made with incomplete time and two valid perspectives in the room — exactly the kind of judgment call that doesn't show up in a feature spec but shapes how a platform actually gets built.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">The Outcome: What Actually Changed</h3>
+<div class="cs-metrics">
+<div class="cs-metric">
+<div class="cs-metric-label">First-Contact Resolution</div>
+<div class="cs-metric-before">~50–60%</div>
+<div class="cs-metric-arrow">↓</div>
+<div class="cs-metric-after">95%</div>
+</div>
+<div class="cs-metric">
+<div class="cs-metric-label">Response Time (95th percentile)</div>
+<div class="cs-metric-before">10–15 sec</div>
+<div class="cs-metric-arrow">↓</div>
+<div class="cs-metric-after">&lt;3 sec</div>
+</div>
+</div>
+<p class="cs-p">Response time held under 3 seconds even during peak business hours — when load on the system was highest and the old experience was at its slowest.</p>
+<div class="cs-caveat">Measured in live production conditions — real users, real edge cases, real operational constraints. Not a controlled test environment.</div>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">What This Taught Me</h3>
+<p class="cs-p">The most durable lesson from this project wasn't about model performance — it was about scope. <strong>Knowing when a system shouldn't answer is as important as making it answer well.</strong> The two escalation paths weren't a safety net bolted on at the end; they were a design decision made early, and they're the reason the resolution rate could climb to 95% without the system ever overstepping into decisions that genuinely required a human.</p>
+</div>
+
+<a href="#projects" class="cs-back rv">← Back to Projects</a>
+
+</div>
+</section>
 <section id="certifications" class="sec seca" aria-labelledby="ce-h"><div class="con"><header class="shd"><p class="ey">Credentials</p><h2 id="ce-h" class="st">Certifications &amp; Awards</h2></header>
 <ul class="cg" role="list">
 <li class="cc hl rv"><div class="ci">🧠</div><h3 class="cn2">Anthropic AI Fluency</h3><p class="cb">Framework &amp; Foundations · Anthropic · 2026</p></li>
