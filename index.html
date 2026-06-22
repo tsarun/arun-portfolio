@@ -445,6 +445,22 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
 /* HERO CASE STUDY LINK */
 .hero-cs-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--bl2);font-size:.84rem;font-weight:700;text-decoration:none;margin-bottom:1.25rem;padding:.5rem 0;transition:gap .2s}
 .hero-cs-link:hover{gap:.75rem;text-decoration:underline}
+
+/* CASE STUDY ACCORDION */
+.cs-accordion{display:flex;flex-direction:column;gap:.875rem}
+.csi{background:linear-gradient(135deg,var(--card2),var(--card3));border:1px solid var(--bdr2);border-radius:1.125rem;overflow:hidden;transition:border-color .2s}
+.csi.open{border-color:rgba(79,142,247,.35)}
+.csq{width:100%;background:none;border:none;color:var(--txt);font-family:inherit;text-align:left;padding:1.375rem 1.5rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.csq:focus-visible{outline:2px solid var(--bl);outline-offset:-2px}
+.csq-left{display:flex;flex-direction:column;flex:1}
+.csq-title{font-size:1.02rem;font-weight:800;color:var(--txt);margin-bottom:.25rem}
+.csq-sub{font-size:.8rem;color:var(--mu);font-weight:500}
+.csic{font-size:1.2rem;flex-shrink:0;transition:transform .3s ease;display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:rgba(79,142,247,.08);border:1px solid rgba(79,142,247,.18);color:var(--bl2)}
+.csi.open .csic{transform:rotate(45deg);background:rgba(79,142,247,.16)}
+.csa{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.csi.open .csa{max-height:6000px}
+.csac{padding:0 1.5rem 1.75rem;border-top:1px solid var(--bdr)}
+.csac .cs-block:first-child{margin-top:1.5rem}
 </style>
 </head>
 <body>
@@ -512,7 +528,7 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
       <h1 id="hh" class="hh"><span class="hn">Arun TS</span><span class="hr">Senior AI Product Manager</span></h1>
       <p class="htw" id="tw" aria-live="polite"></p>
       <p class="hbi"><strong>I ship GenAI products that enterprises actually adopt</strong> — 2,000+ daily users, 35% AHT reduction, $15M TCV delivered. <strong>15+ years</strong> across Fintech, Telecom &amp; Banking. Most AI PMs manage pilots. I manage production.</p>
-      <a href="#resolution-layer-case-study" class="hero-cs-link">📖 Read the full case study — how I took resolution rates from 55% to 95% →</a>
+      <a href="#case-studies" class="hero-cs-link" data-cs-target="cs1-panel">📖 Read the full case study — how I took resolution rates from 55% to 95% →</a>
       <dl class="hst">
         <div class="hs"><dt class="hsl">Yrs Exp</dt><dd class="hsn">15+</dd></div>
         <div class="hs"><dt class="hsl">AHT ↓</dt><dd class="hsn">35%</dd></div>
@@ -619,21 +635,34 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
 <div class="ac"><dt class="al">Quality improvement</dt><dd class="an">18%</dd></div>
 </dl>
 <ul class="pg" role="list">
-<li class="pr ft rv"><span class="prod-badge">Production · Not a Pilot</span><p class="pt">Production · GenAI · Enterprise Telecom</p><h3 class="ptt">The Resolution Layer — GenAI Agent Productivity Platform</h3><p class="pd2">One of the larger production GenAI deployments in enterprise telecom. Built on LLMs and Agentic AI — 2,000+ daily users, 35% AHT reduction, first-contact resolution from ~55% to 95%. Shipped. Adopted. Continuously improving.</p><ul class="tl" role="list"><li class="tg">↓ 35% AHT</li><li class="tg">95% Resolution Rate</li><li class="tg">LLMs · Agentic · RAG</li><li class="tg">2,000+ Users/Day</li></ul><a href="#resolution-layer-case-study" class="ptc-link">Read the full case study →</a></li>
+<li class="pr ft rv"><span class="prod-badge">Production · Not a Pilot</span><p class="pt">Production · GenAI · Enterprise Telecom</p><h3 class="ptt">The Resolution Layer — GenAI Agent Productivity Platform</h3><p class="pd2">One of the larger production GenAI deployments in enterprise telecom. Built on LLMs and Agentic AI — 2,000+ daily users, 35% AHT reduction, first-contact resolution from ~55% to 95%. Shipped. Adopted. Continuously improving.</p><ul class="tl" role="list"><li class="tg">↓ 35% AHT</li><li class="tg">95% Resolution Rate</li><li class="tg">LLMs · Agentic · RAG</li><li class="tg">2,000+ Users/Day</li></ul><a href="#case-studies" class="ptc-link" data-cs-target="cs1-panel">Read the full case study →</a></li>
 <li class="pr rv"><span class="prod-badge">Production · $15M TCV · CBA Sydney</span><p class="pt">Fintech · Digital Banking · HCL / CBA</p><h3 class="ptt">$15M Green Loan Digital Banking Product</h3><p class="pd2">E2E delivery for Australia's renewable energy households. Onsite in Australia ~1 year. 90% onboarding compliance, 40% incident reduction.</p><ul class="tl" role="list"><li class="tg">$15M TCV</li><li class="tg">CBA Launch</li><li class="tg">90% Compliance</li></ul></li>
 <li class="pr rv"><p class="pt">Personal Build · Agentic AI · In Progress</p><h3 class="ptt">FeatureIQ — Agentic Competitor Intelligence</h3><p class="pd2">Autonomously tracks competitor product updates and market signals. Built on Claude API and agentic workflows. Stack: Python, Supabase, Next.js, Vercel.</p><ul class="tl" role="list"><li class="tg">Agentic AI</li><li class="tg">Claude API</li><li class="tg">In Progress</li></ul></li>
 <li class="pr rv"><p class="pt">Personal Build · AI Finance · Live</p><h3 class="ptt">WealthTracker — AI Finance Dashboard</h3><p class="pd2">India-specific finance dashboard — NSE/BSE tracking, IPO alerts, AI-generated insights, AES-encrypted storage. Built independently.</p><ul class="tl" role="list"><li class="tg">AI Insights</li><li class="tg">NSE/BSE</li><li class="tg">Chart.js</li></ul></li>
 <li class="pr rv"><span class="prod-badge">Production · 30% Efficiency Gain</span><p class="pt">Telecom · Platform · Verizon</p><h3 class="ptt">Legacy-to-Pega CX Transformation</h3><p class="pd2">Led migration of Verizon India's legacy CX platform to Pega — 30% efficiency gains, minimal operational disruption.</p><ul class="tl" role="list"><li class="tg">↑ 30% Efficiency</li><li class="tg">Pega Migration</li></ul></li>
 <li class="pr rv"><span class="prod-badge">Production · Citi Direct Client</span><p class="pt">Payments · Fintech · FIS / Citi</p><h3 class="ptt">Citi Payments Product Delivery at FIS Global</h3><p class="pd2">Direct Citi stakeholder engagement on debit card processing, ATM switching, Visa/Mastercard/CUP certifications, and Falcon Fraud Navigator.</p><ul class="tl" role="list"><li class="tg">Citi Client</li><li class="tg">Visa/MC/CUP</li><li class="tg">Falcon Fraud Nav.</li></ul></li>
 </ul></div></section>
-<section id="resolution-layer-case-study" class="sec" aria-labelledby="cs-h">
+<section id="case-studies" class="sec" aria-labelledby="cs-section-h">
 <div class="con">
 <header class="shd rv">
-<p class="ey">Case Study</p>
-<h2 id="cs-h" class="st">Building the Resolution Layer</h2>
-<p class="ss">How a GenAI platform took first-contact resolution from ~55% to 95% — and the judgment calls behind it.</p>
+<p class="ey">Case Studies</p>
+<h2 id="cs-section-h" class="st">How I Actually Think Through Decisions</h2>
+<p class="ss">Two real projects, the tradeoffs behind them, and what they taught me. Click to expand either one.</p>
 </header>
 
+<div class="cs-accordion" id="csAccordion" role="list">
+
+<div class="csi rv" role="listitem">
+  <button class="csq" type="button" aria-expanded="false" aria-controls="cs1-panel">
+    <span class="csq-left">
+      <span class="ey" style="margin-bottom:.375rem;display:block">Case Study 01</span>
+      <span class="csq-title">Building the Resolution Layer</span>
+      <span class="csq-sub">GenAI platform · first-contact resolution ~55% → 95%</span>
+    </span>
+    <span class="csic" aria-hidden="true">+</span>
+  </button>
+  <div class="csa" id="cs1-panel" role="region">
+    <div class="csac">
 <div class="cs-meta rv">
 <span class="cs-tag">Telecom Enterprise</span>
 <span class="cs-tag">GenAI · Agentic AI</span>
@@ -703,9 +732,77 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
 <p class="cs-p">The most durable lesson from this project wasn't about model performance — it was about scope. <strong>Knowing when a system shouldn't answer is as important as making it answer well.</strong> The two escalation paths weren't a safety net bolted on at the end; they were a design decision made early, and they're the reason the resolution rate could climb to 95% without the system ever overstepping into decisions that genuinely required a human.</p>
 <p class="cs-p">It's a principle I now apply to every AI product decision I make: <strong>scope the system's authority before scoping its intelligence.</strong> The next platform I build will start with the same question — not "what can this answer?" but "what should this never decide alone?"</p>
 </div>
+    </div>
+  </div>
+</div>
 
-<a href="#projects" class="cs-back rv">← Back to Projects</a>
+<div class="csi rv" role="listitem">
+  <button class="csq" type="button" aria-expanded="false" aria-controls="cs2-panel">
+    <span class="csq-left">
+      <span class="ey" style="margin-bottom:.375rem;display:block">Case Study 02</span>
+      <span class="csq-title">Designing a Compliant Product Under Regulatory Ambiguity</span>
+      <span class="csq-sub">Renewable energy financing · $15M originated</span>
+    </span>
+    <span class="csic" aria-hidden="true">+</span>
+  </button>
+  <div class="csa" id="cs2-panel" role="region">
+    <div class="csac">
 
+<div class="cs-meta rv" style="margin-top:1.5rem">
+<span class="cs-tag">Banking · Australia</span>
+<span class="cs-tag">Regulatory Compliance</span>
+<span class="cs-tag">$15M Originated</span>
+<span class="cs-tag">2-Month Delivery</span>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">A Regulatory Requirement, Not a Customer Request</h3>
+<p class="cs-p">This product began differently from most of the work on this page. It didn't start with a user pain point or an internal pitch — it started with a new regulatory requirement. A major Australian bank needed to offer a renewable energy financing product within a fixed compliance window.</p>
+<p class="cs-p">I worked alongside Legal and Compliance from the outset, translating a broad regulatory outcome into something that could actually be built, tested, and launched on time.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">The Regulation Set the Outcome. Everything Else Had to Be Designed.</h3>
+<p class="cs-p">The requirement specified only that such a product needed to exist — not its structure, its eligibility criteria, or how it would work in practice. Most of the real product work happened in the space the regulation left open.</p>
+<p class="cs-p">The team designed those details from the ground up: offering it as an add-on to existing home loans, funding renewable energy installations like solar and wind systems, at a reduced interest rate for customers who qualified.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">Eligibility Designed Around More Than Compliance</h3>
+<p class="cs-p">Rather than a single financial cutoff, eligibility was modeled around a combination of factors — outstanding loan balance alongside customer tenure and loyalty.</p>
+<p class="cs-p">Nothing in the regulation required factoring in tenure or loyalty. That was a deliberate addition — using the opportunity to also reinforce retention among long-standing customers, not just satisfy the minimum requirement. It wasn't a clever workaround so much as a sensible design choice once the team had room to decide.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">A Short Window, Shaped by Two Pressures</h3>
+<p class="cs-p">The delivery timeline was short — driven by both the compliance deadline itself and the bank's interest in launching early. The most difficult decisions were practical ones: where to set the eligibility criteria, and how to meet the deadline without compromising on compliance review.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">What the Product Delivered</h3>
+<div class="cs-metrics">
+<div class="cs-metric">
+<div class="cs-metric-label">Total Loan Value Originated</div>
+<div class="cs-metric-after" style="font-size:1.8rem">$15M</div>
+</div>
+<div class="cs-metric">
+<div class="cs-metric-label">Delivery Timeline</div>
+<div class="cs-metric-after" style="font-size:1.8rem">2 Months</div>
+</div>
+</div>
+<p class="cs-p">A straightforward delivery metric, not a projection — tied back simply to the eligibility design above, without overstating the connection.</p>
+</div>
+
+<div class="cs-block rv">
+<h3 class="cs-h">A Brief Note on Compliance-Driven Work</h3>
+<p class="cs-p">The lesson I keep from this project is a quiet one: regulatory requirements set a floor, not a ceiling. There's often real room to design something that does more than the minimum, even within a fixed mandate.</p>
+</div>
+
+    </div>
+  </div>
+</div>
+
+</div>
 </div>
 </section>
 <section id="certifications" class="sec seca" aria-labelledby="ce-h"><div class="con"><header class="shd"><p class="ey">Credentials</p><h2 id="ce-h" class="st">Certifications &amp; Awards</h2></header>
@@ -967,7 +1064,7 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
           <div class="faqac">
             Yes — I wrote a full case study on the GenAI platform behind these results, covering the actual problem, the architecture decisions, a real tradeoff I navigated with engineering, and the production metrics with honest caveats. It's the most detailed look at how I actually think through AI product decisions.
             <div class="faqtag"><span class="ft3">Case Study</span><span class="ft3">Production GenAI</span></div>
-            <a href="#resolution-layer-case-study" class="btn bs" style="display:inline-flex;margin-top:1rem">📖 Read the full case study →</a>
+            <a href="#case-studies" class="btn bs" style="display:inline-flex;margin-top:1rem" data-cs-target="cs1-panel">📖 Read the full case study →</a>
           </div>
         </div>
       </div>
@@ -1292,6 +1389,54 @@ function pdfs(){
 /* BOOT */
 
 /* FAQ ACCORDION */
+
+/* CASE STUDY ACCORDION */
+function caseStudies(){
+  var items=document.querySelectorAll('.csi');
+  items.forEach(function(item){
+    var btn=item.querySelector('.csq');
+    var panel=item.querySelector('.csa');
+    if(!btn||!panel)return;
+    btn.addEventListener('click',function(){
+      var isOpen=item.classList.contains('open');
+      items.forEach(function(other){
+        if(other!==item){
+          other.classList.remove('open');
+          var ob=other.querySelector('.csq');
+          var op=other.querySelector('.csa');
+          if(ob)ob.setAttribute('aria-expanded','false');
+          if(op)op.style.maxHeight='';
+        }
+      });
+      if(isOpen){
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded','false');
+        panel.style.maxHeight='';
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        panel.style.maxHeight=panel.scrollHeight+'px';
+        if(window.innerWidth<700){
+          setTimeout(function(){item.scrollIntoView({behavior:'smooth',block:'nearest'});},320);}
+      }
+    });
+  });
+  // Auto-expand when linked from elsewhere on the page (hero, project card, FAQ)
+  document.querySelectorAll('a[data-cs-target]').forEach(function(link){
+    link.addEventListener('click',function(){
+      var targetId=link.getAttribute('data-cs-target');
+      var panel=document.getElementById(targetId);
+      if(!panel)return;
+      var item=panel.closest('.csi');
+      if(!item||item.classList.contains('open'))return;
+      setTimeout(function(){
+        var btn=item.querySelector('.csq');
+        if(btn)btn.click();
+      },350);
+    });
+  });
+}
+
 function faq(){
   var items=document.querySelectorAll('.faqi');
   items.forEach(function(item){
@@ -1401,7 +1546,7 @@ function theme(){
   if(btn2) btn2.addEventListener('click', toggleTheme);
 }
 
-typewriter();reveal();nav();mnav();fab();pdfs();faq();recruiterMode();
+typewriter();reveal();nav();mnav();fab();pdfs();faq();caseStudies();recruiterMode();
   theme();
 window.addEventListener('load',function(){reveal();});
 
