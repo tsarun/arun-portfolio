@@ -988,13 +988,14 @@ html[data-theme="light"] .trust-logo-wrap:hover .tl-img{filter:grayscale(0%) bri
 <div class="rb rb-highlight">
 <div class="rb-badge">Ready to download</div>
 <h3>📄 Download Resume</h3>
-<p>Senior AI Product Manager · GenAI · Agentic AI · LLM · RAG<br>Full 15-year history · All certifications &amp; metrics</p>
+<p>AI Product Manager · GenAI · Agentic AI · LLM · RAG<br>Full 15-year history · All certifications &amp; metrics</p>
 <div class="dlr">
-<button class="btn bp" id="dlResume2" type="button">⬇ Premium PDF</button>
+<button class="btn bp" id="dlIndia" type="button">🇮🇳 Resume (India)</button>
+<button class="btn bp" id="dlUAE" type="button">🇦🇪 Resume (UAE)</button>
 <button class="btn ba" id="dlATS" type="button">🤖 ATS Version</button>
 </div>
 <span class="pst" id="pdfStatus" role="status" aria-live="polite"></span>
-<p class="phi">Premium PDF — for direct emails &nbsp;·&nbsp; ATS Version — for job portal uploads</p>
+<p class="phi">India &amp; UAE — tailored for each market &nbsp;·&nbsp; ATS Version — for job portal uploads</p>
 </div>
 </address>
 <aside class="ot">
@@ -1508,7 +1509,6 @@ function pdfs(){
     setTimeout(function(){
       try{
         var doc=buildFn();
-        // Safari-safe: blob URL + programmatic <a download> avoids PDF viewer redirect
         var blob=doc.output('blob');
         var url=URL.createObjectURL(blob);
         var a=document.createElement('a');
@@ -1521,8 +1521,16 @@ function pdfs(){
       btn.disabled=false;setTimeout(function(){set('');},4000);
     },80);
   }
-  var btns=[document.getElementById('dlP'),document.getElementById('dlResume2')];
-  btns.forEach(function(b){if(b)b.addEventListener('click',function(){if(!window.jspdf){set('PDF library loading, please try again in a moment.');return;}run(buildPremium,'Arun_TS_Senior_AI_Product_Manager_Resume_2025.pdf',b);});});
+  /* Legacy hero button still wired to Premium */
+  var dlP=document.getElementById('dlP');
+  if(dlP)dlP.addEventListener('click',function(){if(!window.jspdf){set('PDF library loading, please try again in a moment.');return;}run(buildPremium,'Arun_TS_Senior_AI_Product_Manager_Resume_2025.pdf',dlP);});
+  /* India resume */
+  var dlIndia=document.getElementById('dlIndia');
+  if(dlIndia)dlIndia.addEventListener('click',function(){if(!window.jspdf){set('PDF library loading, please try again in a moment.');return;}run(buildIndia,'Arun_TS_AI_Product_Manager_India.pdf',dlIndia);});
+  /* UAE resume */
+  var dlUAE=document.getElementById('dlUAE');
+  if(dlUAE)dlUAE.addEventListener('click',function(){if(!window.jspdf){set('PDF library loading, please try again in a moment.');return;}run(buildUAE,'Arun_TS_AI_Product_Manager_UAE.pdf',dlUAE);});
+  /* ATS version unchanged */
   var ats=document.getElementById('dlATS');
   if(ats)ats.addEventListener('click',function(){if(!window.jspdf){set('PDF library loading, please try again in a moment.');return;}run(buildATS,'Arun_TS_ATS_Resume_2025.pdf',ats);});
 }
@@ -1772,6 +1780,162 @@ function theme(){
   var btn2 = document.getElementById('themeToggleMobile');
   if(btn1) btn1.addEventListener('click', toggleTheme);
   if(btn2) btn2.addEventListener('click', toggleTheme);
+}
+
+
+/* ── INDIA RESUME (v7) ─────────────────────────────────────────────────── */
+function buildIndia(){
+  var J=window.jspdf.jsPDF;
+  var doc=new J({unit:'mm',format:'a4'});
+  var W=210,M=16,TW=W-M*2,y=0;
+  var BL=[0,85,170],DK=[26,26,46],GR=[85,85,85],LT=[136,136,136];
+  function chk(){if(y>276){doc.addPage();y=14;}}
+  function sh(t){chk();doc.setDrawColor(BL[0],BL[1],BL[2]);doc.setLineWidth(.5);doc.line(M,y+1,W-M,y+1);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text(t,M,y);y+=8;}
+  function para(t){chk();doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(DK[0],DK[1],DK[2]);var l=doc.splitTextToSize(t,TW);doc.text(l,M,y);y+=l.length*4.4+2;}
+  function bul(t){chk();doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text('\u25aa',M,y);doc.setTextColor(DK[0],DK[1],DK[2]);doc.setFont('helvetica','normal');var l=doc.splitTextToSize(t,TW-5);doc.text(l,M+5,y);y+=l.length*4.4+1.2;}
+  function rh(r,co,p){chk();doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(DK[0],DK[1],DK[2]);doc.text(r,M,y);doc.setFont('helvetica','normal');doc.setFontSize(7.5);var pw=doc.getTextWidth(p);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text(p,W-M-pw,y);doc.setTextColor(GR[0],GR[1],GR[2]);doc.text(co,M,y+4.5);y+=10.5;}
+  function stk(t){chk();doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(LT[0],LT[1],LT[2]);var l=doc.splitTextToSize('Tools & Tech: '+t,TW);doc.text(l,M,y);y+=l.length*3.8+2;}
+  function skb(lb,val){chk();doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text(lb+':',M,y);doc.setFont('helvetica','normal');doc.setTextColor(DK[0],DK[1],DK[2]);var l=doc.splitTextToSize(val,TW-26);doc.text(l,M+26,y);y+=Math.max(l.length*4.4,5)+1.5;}
+  doc.setFont('helvetica','bold');doc.setFontSize(22);doc.setTextColor(DK[0],DK[1],DK[2]);doc.text('ARUN T.S.',W/2,16,{align:'center'});
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text('AI Product Manager  \u00b7  GenAI Agent Platforms  \u00b7  Enterprise SaaS  \u00b7  Telecom & Fintech',W/2,23,{align:'center'});
+  doc.setFontSize(7.5);doc.setTextColor(GR[0],GR[1],GR[2]);doc.text('Chennai, India  \u00b7  Available August 2026',W/2,29,{align:'center'});
+  doc.text('+91 7358747323  \u00b7  tsarun1989@gmail.com  \u00b7  linkedin.com/in/ts-arun  \u00b7  github.com/tsarun  \u00b7  tsarun.com',W/2,34,{align:'center'});
+  doc.setDrawColor(BL[0],BL[1],BL[2]);doc.setLineWidth(.4);doc.line(M,37,W-M,37);
+  y=44;
+  sh('PROFESSIONAL SUMMARY');
+  para('AI Product Manager with 15+ years across Fintech, Telecom, and Banking — specialising in GenAI Agent Platforms, Agentic AI, and enterprise-scale product delivery. Architected and scaled a production GenAI Agent Productivity Platform at Verizon India delivering a 35% reduction in Average Handling Time and 85%+ user confidence scores across 2,000+ daily users — all live in production. Spearheaded a $15M TCV digital banking engagement in Sydney for a leading Australian bank, and executed international payments certification across 3+ APAC markets. Recognised with a Verizon CXO Award for Creative Excellence (2024). Anthropic AI Fluency, Claude 101, SAFe 6 POPM, and CSPO certified. Targeting Senior AI Product Manager roles across India.');
+  y+=2;
+  sh('PROFESSIONAL EXPERIENCE');
+  rh('AI Product Manager — GenAI Agent Platform','Verizon India  |  Chennai, India','Oct 2024 – Present');
+  bul('Architected product vision and roadmap for Verizon India GenAI Agent Productivity Platform — scaled to 2,000+ daily enterprise users, powered by LLMs, Agentic AI, and RAG-based knowledge retrieval');
+  bul('Spearheaded full product lifecycle across 3+ engineering squads: discovery, backlog prioritisation, roadmap planning, delivery, and adoption — translating complex AI capabilities into production-grade shipped features');
+  bul('Engineered KPI and OKR frameworks per AI feature release — directly connecting LLM behaviour to measurable outcomes: 35% reduction in Average Handling Time and 18% improvement in response quality');
+  bul('Accelerated enterprise adoption across 2,000+ users through structured feedback loops and iterative LLM optimisation — achieving 85%+ user confidence scores at scale');
+  bul('Evangelised GenAI roadmap ideas and delivered live product demos to Verizon Executive Leadership — recognised with CXO Award for Creative Excellence (2024)');
+  bul('Collaborated with engineering and data science on model selection, prompt engineering, evaluation frameworks, and agentic pipeline design');
+  stk('LLMs · Agentic AI · RAG · Prompt Engineering · GenAI Platforms · Python · SAFe Agile · Jira · Confluence');
+  rh('Lead Product Owner — GenAI Chatbots & CX Platform','Verizon India  |  Chennai, India','Jul 2021 – Oct 2024');
+  bul('Launched and scaled Verizon India conversational AI and GenAI Chatbot portfolio — established the AI product foundation that evolved into the enterprise GenAI platform');
+  bul('Defined NLU strategy, conversational flows, intent taxonomy, and fallback handling across 3+ agile squads — translating ML research into measurable user-facing improvements');
+  bul('Orchestrated migration of legacy CX platform to Pega-driven application — delivered full enterprise transition with zero major operational disruptions');
+  bul('Translated 100+ requirements into Epics, Features, and Stories — full SAFe backlog ownership from discovery through delivery');
+  stk('Conversational AI · NLP · Chatbots · Pega · SAFe Agile · Jira');
+  rh('Product Owner — Digital Banking','HCL Technologies  |  Chennai  |  Sydney, Australia (Onsite — CBA)','Feb 2018 – Jul 2021');
+  bul('Launched a $15M TCV Green Loan digital banking product for CBA (Commonwealth Bank of Australia) — end-to-end ownership from requirements through go-live, serving 95% of Australian renewable energy households');
+  bul('Embedded onsite in Sydney for ~1 year with CBA stakeholders; researched Australian green loan landscape — sized market demand, analysed 10+ competitor offerings');
+  bul('Achieved 90% customer onboarding compliance via 2FA redesign; eliminated 40% of post-launch incident tickets; coordinated 5 concurrent client engagements');
+  stk('Digital Banking · Core Banking · HCL Engine · Green Finance · CBA · Agile · Jira');
+  rh('Product Implementation Analyst — Payments & Cards','FIS Global  |  Chennai  |  US  |  APAC','Mar 2016 – Feb 2018');
+  bul('Owned product backlog for Citi debit card and ATM transaction processing across US and APAC — managing delivery across 3+ markets');
+  bul('Executed Visa, Mastercard, and China UnionPay (CUP) certification programmes; enhanced Falcon Fraud Navigator transaction risk scoring');
+  bul('Unified cross-functional delivery teams of 10+ developers, QA, and L1 support through structured Show & Tell sessions');
+  stk('Payments · ATM Switching · Visa · Mastercard · CUP · Falcon Fraud Navigator · Citi');
+  rh('Onsite Implementation Manager','Betamonks Technology  |  Philippines  |  Malaysia  |  Singapore','May 2014 – Mar 2016');
+  bul('Deployed Contactless EMV cards and cardless ATM transactions across Philippines and Malaysia — among the earliest EMV contactless rollouts in Southeast Asia');
+  bul('Certified Visa and Mastercard payment programmes across 3 markets; managed end-to-end delivery from discovery through go-live');
+  stk('EMV · Contactless Cards · ATM Switching · Visa · Mastercard · SEA Markets');
+  rh('Software Engineer — Requirement Analysis','Zylog Systems India Ltd  |  Chennai, India','Jun 2011 – May 2014');
+  bul('Implemented cheque truncation and core banking systems for 3+ banking clients; resolved L1 production incidents and contributed to application performance tuning');
+  y+=2;
+  sh('CORE SKILLS & TECHNOLOGIES');
+  skb('AI & GenAI','LLMs · Generative AI · Agentic AI · RAG · Prompt Engineering · Conversational AI · NLP · Claude API · Enterprise AI');
+  skb('Product & Agile','Product Roadmap · Backlog Management · OKRs/KPIs · A/B Testing · Go-to-Market · 0→1 · SAFe Agile · Scrum · Jira · Confluence');
+  skb('Domains','Fintech · Banking · Telecom · BFSI · Digital Banking · Payments · Green Finance · Enterprise AI · ATM/Cards');
+  skb('Tech','Python · SQL · Supabase · Next.js · Claude API · Chart.js · Pega · HCL Core Banking');
+  skb('Leadership','Cross-functional Leadership · Stakeholder Management · C-Suite Alignment · Executive Presentations · Agile Coaching');
+  y+=2;
+  sh('CERTIFICATIONS & CREDENTIALS');
+  bul('Anthropic AI Fluency: Framework & Foundations — Anthropic · 2025  |  Claude 101 — Applied AI Practitioner — Anthropic · 2025');
+  bul('SAFe 6 POPM — Scaled Agile · 2023  |  CSPO — Certified Scrum Product Owner — Scrum Alliance');
+  bul('McKinsey Leadership Accelerator — McKinsey & Company  |  Visa · Mastercard · CUP Certified — FIS Global');
+  y+=2;
+  sh('EDUCATION');
+  para('B.Tech, Information Technology  —  Anna University, Chennai  ·  2006 – 2010');
+  y+=2;
+  sh('PERSONAL PROJECTS');
+  bul('WealthTracker — AI Finance Dashboard: NSE/BSE market tracking, IPO alerts, AES-encrypted storage, Chart.js visualisations, AI-generated insights — independently developed.');
+  bul('FeatureIQ — AI Competitor Intelligence Tracker (In Progress): Agentic AI tool monitoring competitor product launches using Claude API.');
+  var tot=doc.getNumberOfPages();
+  for(var p=1;p<=tot;p++){doc.setPage(p);doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(150,150,150);doc.text('Arun T.S.  |  AI Product Manager  |  tsarun1989@gmail.com  |  linkedin.com/in/ts-arun',M,291);doc.text(p+' of '+tot,W-M,291,{align:'right'});}
+  return doc;
+}
+
+/* ── UAE RESUME (v7) ───────────────────────────────────────────────────── */
+function buildUAE(){
+  var J=window.jspdf.jsPDF;
+  var doc=new J({unit:'mm',format:'a4'});
+  var W=210,M=16,TW=W-M*2,y=0;
+  var BL=[0,85,170],DK=[26,26,46],GR=[85,85,85],LT=[136,136,136];
+  function chk(){if(y>276){doc.addPage();y=14;}}
+  function sh(t){chk();doc.setDrawColor(BL[0],BL[1],BL[2]);doc.setLineWidth(.5);doc.line(M,y+1,W-M,y+1);doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text(t,M,y);y+=8;}
+  function para(t){chk();doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(DK[0],DK[1],DK[2]);var l=doc.splitTextToSize(t,TW);doc.text(l,M,y);y+=l.length*4.4+2;}
+  function bul(t){chk();doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text('\u25aa',M,y);doc.setTextColor(DK[0],DK[1],DK[2]);doc.setFont('helvetica','normal');var l=doc.splitTextToSize(t,TW-5);doc.text(l,M+5,y);y+=l.length*4.4+1.2;}
+  function rh(r,co,p){chk();doc.setFont('helvetica','bold');doc.setFontSize(9);doc.setTextColor(DK[0],DK[1],DK[2]);doc.text(r,M,y);doc.setFont('helvetica','normal');doc.setFontSize(7.5);var pw=doc.getTextWidth(p);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text(p,W-M-pw,y);doc.setTextColor(GR[0],GR[1],GR[2]);doc.text(co,M,y+4.5);y+=10.5;}
+  function stk(t){chk();doc.setFont('helvetica','italic');doc.setFontSize(7);doc.setTextColor(LT[0],LT[1],LT[2]);var l=doc.splitTextToSize('Tools & Tech: '+t,TW);doc.text(l,M,y);y+=l.length*3.8+2;}
+  function skb(lb,val){chk();doc.setFont('helvetica','bold');doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text(lb+':',M,y);doc.setFont('helvetica','normal');doc.setTextColor(DK[0],DK[1],DK[2]);var l=doc.splitTextToSize(val,TW-26);doc.text(l,M+26,y);y+=Math.max(l.length*4.4,5)+1.5;}
+  doc.setFont('helvetica','bold');doc.setFontSize(22);doc.setTextColor(DK[0],DK[1],DK[2]);doc.text('ARUN T.S.',W/2,16,{align:'center'});
+  doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(BL[0],BL[1],BL[2]);doc.text('AI Product Manager  \u00b7  GenAI Agent Platforms  \u00b7  Enterprise SaaS  \u00b7  Telecom & Fintech',W/2,23,{align:'center'});
+  doc.setFontSize(7.5);doc.setTextColor(GR[0],GR[1],GR[2]);doc.text('Dubai, UAE  (Relocation Ready  \u00b7  Available August 2026)',W/2,29,{align:'center'});
+  doc.text('+91 7358747323  \u00b7  tsarun1989@gmail.com  \u00b7  linkedin.com/in/ts-arun  \u00b7  github.com/tsarun  \u00b7  tsarun.com',W/2,34,{align:'center'});
+  doc.setDrawColor(BL[0],BL[1],BL[2]);doc.setLineWidth(.4);doc.line(M,37,W-M,37);
+  y=44;
+  sh('PROFESSIONAL SUMMARY');
+  para('AI Product Manager with 15+ years across Fintech, Telecom, and Banking — specialising in GenAI Agent Platforms, Agentic AI, and enterprise-scale product delivery. Architected and scaled a production GenAI Agent Productivity Platform at Verizon India delivering a 35% reduction in Average Handling Time and 85%+ user confidence scores across 2,000+ daily users — all live in production. Spearheaded a $15M TCV digital banking engagement in Sydney for a leading Australian bank, and executed international payments certification across 3+ APAC markets. Recognised with a Verizon CXO Award for Creative Excellence (2024). Targeting Senior AI Product Manager roles in Dubai and the UAE — combining production GenAI delivery, onsite international execution across Sydney and Southeast Asia, and enterprise-scale cross-functional leadership.');
+  y+=2;
+  sh('PROFESSIONAL EXPERIENCE');
+  rh('AI Product Manager — GenAI Agent Platform','Verizon India  |  Chennai, India','Oct 2024 – Present');
+  bul('Architected product vision and roadmap for Verizon India GenAI Agent Productivity Platform — scaled to 2,000+ daily enterprise users, powered by LLMs, Agentic AI, and RAG-based knowledge retrieval');
+  bul('Spearheaded full product lifecycle across 3+ engineering squads: discovery, backlog prioritisation, roadmap planning, delivery, and adoption — translating complex AI capabilities into production-grade shipped features');
+  bul('Engineered KPI and OKR frameworks per AI feature release — directly connecting LLM behaviour to measurable outcomes: 35% reduction in Average Handling Time and 18% improvement in response quality');
+  bul('Accelerated enterprise adoption across 2,000+ users through structured feedback loops and iterative LLM optimisation — achieving 85%+ user confidence scores at scale');
+  bul('Evangelised GenAI roadmap ideas and delivered live product demos to Verizon Executive Leadership — recognised with CXO Award for Creative Excellence (2024)');
+  bul('Collaborated with engineering and data science on model selection, prompt engineering, evaluation frameworks, and agentic pipeline design');
+  stk('LLMs · Agentic AI · RAG · Prompt Engineering · GenAI Platforms · Python · SAFe Agile · Jira · Confluence');
+  rh('Lead Product Owner — GenAI Chatbots & CX Platform','Verizon India  |  Chennai, India','Jul 2021 – Oct 2024');
+  bul('Launched and scaled Verizon India conversational AI and GenAI Chatbot portfolio — established the AI product foundation that evolved into the enterprise GenAI platform');
+  bul('Defined NLU strategy, conversational flows, intent taxonomy, and fallback handling across 3+ agile squads — translating ML research into measurable user-facing improvements');
+  bul('Orchestrated migration of legacy CX platform to Pega-driven application — delivered full enterprise transition with zero major operational disruptions');
+  bul('Translated 100+ requirements into Epics, Features, and Stories — full SAFe backlog ownership from discovery through delivery');
+  stk('Conversational AI · NLP · Chatbots · Pega · SAFe Agile · Jira');
+  rh('Product Owner — Digital Banking','HCL Technologies  |  Chennai  |  Sydney, Australia (Onsite — CBA)','Feb 2018 – Jul 2021');
+  bul('Launched a $15M TCV Green Loan digital banking product for CBA (Commonwealth Bank of Australia) — end-to-end ownership from requirements through go-live, serving 95% of Australian renewable energy households');
+  bul('Embedded onsite in Sydney for ~1 year collaborating directly with CBA stakeholders — accelerating decision cycles and eliminating requirement gaps');
+  bul('Researched Australian green loan landscape — sized market demand, analysed 10+ competitor offerings, mapped regulatory drivers to shape product positioning');
+  bul('Achieved 90% customer onboarding compliance via 2FA redesign; eliminated 40% of post-launch incident tickets; coordinated 5 concurrent client engagements');
+  stk('Digital Banking · Core Banking · HCL Engine · Green Finance · CBA · Agile · Jira');
+  rh('Product Implementation Analyst — Payments & Cards','FIS Global  |  Chennai  |  US  |  APAC','Mar 2016 – Feb 2018');
+  bul('Owned product backlog for Citi debit card and ATM transaction processing across US and APAC — managing delivery across 3+ markets for tier-1 financial institutions');
+  bul('Executed Visa, Mastercard, and China UnionPay (CUP) certification programmes; enhanced Falcon Fraud Navigator transaction risk scoring');
+  bul('Unified cross-functional delivery teams of 10+ developers, QA, and L1 support through structured Show & Tell sessions');
+  stk('Payments · ATM Switching · Visa · Mastercard · CUP · Falcon Fraud Navigator · Citi');
+  rh('Onsite Implementation Manager','Betamonks Technology  |  Philippines  |  Malaysia  |  Singapore','May 2014 – Mar 2016');
+  bul('Deployed Contactless EMV cards and cardless ATM transactions across Philippines and Malaysia — among the earliest EMV contactless rollouts in Southeast Asia');
+  bul('Certified Visa and Mastercard payment programmes across 3 markets; managed end-to-end delivery from discovery through go-live');
+  stk('EMV · Contactless Cards · ATM Switching · Visa · Mastercard · SEA Markets');
+  rh('Software Engineer — Requirement Analysis','Zylog Systems India Ltd  |  Chennai, India','Jun 2011 – May 2014');
+  bul('Implemented cheque truncation and core banking systems for 3+ banking clients; resolved L1 production incidents and application performance tuning');
+  y+=2;
+  sh('CORE SKILLS & TECHNOLOGIES');
+  skb('AI & GenAI','LLMs · Generative AI · Agentic AI · RAG · Prompt Engineering · Conversational AI · NLP · Claude API · Enterprise AI');
+  skb('Product & Agile','Product Roadmap · Backlog Management · OKRs/KPIs · A/B Testing · Go-to-Market · 0→1 · SAFe Agile · Scrum · Jira · Confluence');
+  skb('Domains','Fintech · Banking · Telecom · BFSI · Digital Banking · Payments · Green Finance · Enterprise AI · ATM/Cards');
+  skb('Tech','Python · SQL · Supabase · Next.js · Claude API · Chart.js · Pega · HCL Core Banking');
+  skb('Leadership','Cross-functional Leadership · Stakeholder Management · C-Suite Alignment · Executive Presentations · Agile Coaching');
+  y+=2;
+  sh('CERTIFICATIONS & CREDENTIALS');
+  bul('Anthropic AI Fluency: Framework & Foundations — Anthropic · 2025  |  Claude 101 — Applied AI Practitioner — Anthropic · 2025');
+  bul('SAFe 6 POPM — Scaled Agile · 2023  |  CSPO — Certified Scrum Product Owner — Scrum Alliance');
+  bul('McKinsey Leadership Accelerator — McKinsey & Company  |  Visa · Mastercard · CUP Certified — FIS Global');
+  y+=2;
+  sh('EDUCATION');
+  para('B.Tech, Information Technology  —  Anna University, Chennai  ·  2006 – 2010');
+  y+=2;
+  sh('PERSONAL PROJECTS');
+  bul('WealthTracker — AI Finance Dashboard: NSE/BSE market tracking, IPO alerts, AES-encrypted storage, Chart.js visualisations, AI-generated insights — independently developed.');
+  bul('FeatureIQ — AI Competitor Intelligence Tracker (In Progress): Agentic AI tool monitoring competitor product launches using Claude API.');
+  var tot=doc.getNumberOfPages();
+  for(var p=1;p<=tot;p++){doc.setPage(p);doc.setFont('helvetica','normal');doc.setFontSize(7);doc.setTextColor(150,150,150);doc.text('Arun T.S.  |  AI Product Manager  |  tsarun1989@gmail.com  |  linkedin.com/in/ts-arun',M,291);doc.text(p+' of '+tot,W-M,291,{align:'right'});}
+  return doc;
 }
 
 typewriter();reveal();nav();mnav();fab();pdfs();faq();caseStudies();recruiterMode();
