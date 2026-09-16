@@ -671,65 +671,20 @@ html[data-theme="light"] .currently-building{
 /* ============================================
    ASK ME ANYTHING - Claude API Live Mode
    ============================================ */
-.ai-live-wrap{
-  margin-top:2rem;
-  border-top:1px solid var(--bdr);
-  padding-top:1.5rem;
-}
-.ai-live-label{
-  font-size:.72rem;
-  color:var(--mu);
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  margin-bottom:.75rem;
-}
+
+
 .ai-live-label span{color:var(--am);font-weight:700}
-.ai-input-row{
-  display:flex;
-  gap:.625rem;
-  margin-bottom:.75rem;
-}
-.ai-input{
-  flex:1;
-  background:var(--bg);
-  border:1px solid var(--bdr2);
-  border-radius:.625rem;
-  padding:.6rem .875rem;
-  color:var(--txt);
-  font-family:inherit;
-  font-size:.85rem;
-  transition:border-color .2s;
-}
+
+
 .ai-input:focus{outline:none;border-color:var(--am)}
-.ai-send-btn{
-  background:linear-gradient(135deg,var(--am),var(--am2));
-  color:#1a0f00;
-  border:none;
-  border-radius:.625rem;
-  padding:.6rem 1.1rem;
-  font-weight:700;
-  font-size:.8rem;
-  cursor:pointer;
-  font-family:inherit;
-  transition:opacity .15s,transform .1s;
-  white-space:nowrap;
-}
-.ai-send-btn:hover{opacity:.9}
-.ai-send-btn:active{transform:scale(.98)}
-.ai-send-btn:disabled{opacity:.5;cursor:not-allowed}
-.ai-response{
-  background:var(--card2);
-  border:1px solid var(--bdr);
-  border-radius:.75rem;
-  padding:1rem 1.125rem;
-  font-size:.85rem;
-  color:var(--txt);
-  line-height:1.75;
-  display:none;
-}
-.ai-response.visible{display:block}
-.ai-response-thinking{color:var(--mu);font-style:italic}
-.ai-token-note{font-size:.65rem;color:var(--muted-dim,.4);margin-top:.5rem;text-align:right}
+
+
+
+
+
+
+
+
 </style>
 </head>
 <body>
@@ -1393,15 +1348,7 @@ html[data-theme="light"] .currently-building{
       </div>
 
     <div class="faq-cta rv">
-      <div class="ai-live-wrap">
-        <p class="ai-live-label">Not in the list above? <span>Ask live — powered by Claude API</span></p>
-        <div class="ai-input-row">
-          <input class="ai-input" id="aiQ" type="text" placeholder="e.g. How do you handle hallucination in enterprise AI?" maxlength="200" />
-          <button class="ai-send-btn" id="aiSend" onclick="askLive()">Ask →</button>
-        </div>
-        <div class="ai-response" id="aiResp"></div>
-        <p class="ai-token-note">Responses capped at ~300 tokens · Claude Sonnet</p>
-      </div>
+      
       <p>Have a specific question not covered here? I reply within 24 hours.</p>
       <a class="btn bs" href="mailto:tsarun1989@gmail.com?subject=Question%20from%20your%20portfolio&body=Hi%20Arun%2C%0A%0AI%20have%20a%20question%20about%20your%20experience%3A%0A%0A" style="display:inline-flex">📧 Ask me directly</a>
     </div>
@@ -2165,51 +2112,7 @@ window.addEventListener('load',function(){reveal();});
 
 })();
 
-/* ============================================
-   CLAUDE API - Live Ask Me Anything (Option C)
-   ============================================ */
-async function askLive(){
-  var q = document.getElementById('aiQ').value.trim();
-  if(!q) return;
-  var btn = document.getElementById('aiSend');
-  var resp = document.getElementById('aiResp');
-  btn.disabled = true;
-  btn.innerText = '...';
-  resp.className = 'ai-response visible';
-  resp.innerHTML = '<span class="ai-response-thinking">Thinking...</span>';
-  
-  var sysPrompt = "You are Arun TS's portfolio assistant. Arun is a Senior AI Product Manager with 16+ years of experience across Telecom, Fintech, and Banking. He has led production GenAI platforms at Verizon India — a B2C conversational AI (8.3M+ sessions, 89% CSAT) and a B2B Agent Assist Platform (2,000+ daily users, 35% AHT reduction). He also delivered a $15M Green Loan digital banking product for Commonwealth Bank of Australia at HCL Technologies, and managed Citi payments at FIS Global. He holds SAFe 6 POPM, CSPO, Anthropic AI Fluency, and Google AI certifications. He is actively interviewing and available immediately. Answer the recruiter or hiring manager's question directly, concisely, and with evidence from Arun's real experience. Keep answers under 200 words. Do not make up details not mentioned above.";
-  
-  try {
-    var res = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 300,
-        system: sysPrompt,
-        messages: [{role:'user', content: q}]
-      })
-    });
-    var data = await res.json();
-    if(data.content && data.content[0] && data.content[0].text){
-      resp.innerHTML = data.content[0].text.replace(/\n/g,'<br>');
-    } else {
-      resp.innerHTML = 'Unable to get a response. <a href="mailto:tsarun1989@gmail.com">Email Arun directly →</a>';
-    }
-  } catch(e) {
-    resp.innerHTML = 'Something went wrong. <a href="mailto:tsarun1989@gmail.com">Email Arun directly →</a>';
-  }
-  btn.disabled = false;
-  btn.innerText = 'Ask →';
-}
-
-// Allow Enter key to trigger ask
-document.addEventListener('DOMContentLoaded', function(){
-  var inp = document.getElementById('aiQ');
-  if(inp) inp.addEventListener('keydown', function(e){
-    if(e.key === 'Enter') askLive();
-  });
+/* Claude API live chat removed */
 });
 </script>
 </body>
