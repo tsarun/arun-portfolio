@@ -151,7 +151,7 @@
     .hero-meta-row { margin-top: 1rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1.5rem; border-top: 1px solid var(--border); padding-top: 1rem; font-size: 0.875rem; }
     .link-arrow { display: inline-flex; align-items: center; gap: 0.375rem; transition: color 180ms ease; }
     .link-arrow:hover { color: var(--primary); }
-    .portrait-col { display: flex; flex-direction: column; width: 100%; max-width: 20rem; margin: 0 auto; }
+    .portrait-col { display: flex; flex-direction: column; width: 100%; max-width: 20rem; margin: 0 auto; align-self: start; }
     .portrait-frame { position: relative; isolation: isolate; aspect-ratio: 4 / 5; width: 100%; overflow: hidden; }
     .portrait-theme-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%; transition: opacity 700ms ease-in-out; will-change: opacity; }
     .portrait-light { opacity: 1; }
@@ -283,8 +283,8 @@
       .container { padding-left: 2.5rem; padding-right: 2.5rem; }
       .main-nav { display: flex; }
       .section { padding-top: 7rem; padding-bottom: 7rem; }
-      .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr); gap: 2rem; min-height: calc(100vh - 4rem); padding-top: 4rem; padding-bottom: 4rem; }
-      .portrait-col { max-width: 28rem; justify-self: end; margin: 0; }
+      .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(260px, 1fr); gap: 2rem; padding-top: 4rem; padding-bottom: 4rem; }
+      .portrait-col { max-width: 24rem; justify-self: end; margin: 0; }
       .split { grid-template-columns: 0.75fr 1.25fr; }
       .stats-grid { grid-template-columns: repeat(4, 1fr); }
       .stat { border-bottom: 0; border-right: 1px solid color-mix(in oklch, var(--inverse-foreground) 20%, transparent); padding: 2.5rem 1.75rem 2.5rem 1.75rem; }
@@ -300,8 +300,7 @@
     }
     @media (min-width: 1024px) {
       .hero-grid { grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.7fr); gap: 3rem; padding-top: 5rem; padding-bottom: 5rem; }
-      .portrait-col { max-width: none; align-self: stretch; }
-      .portrait-frame { aspect-ratio: auto; flex: 1; }
+      .portrait-col { max-width: 28rem; align-self: start; }
       .hero-scroll { display: block; position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: var(--muted-foreground); }
       .case-study { grid-template-columns: 0.75fr 1.25fr; padding: 4rem 0; }
       .contact-grid { grid-template-columns: 1.25fr 0.75fr; align-items: end; }
@@ -831,6 +830,32 @@
           });
         });
       });
+
+      // Keep the address bar clean: scroll to sections without adding #hash to the URL.
+      (function () {
+        function cleanScroll(target) {
+          var el = document.getElementById(target);
+          if (el) el.scrollIntoView({ block: "start" });
+          if (history.replaceState) {
+            history.replaceState(null, "", location.pathname + location.search);
+          }
+        }
+        document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            var target = link.getAttribute("href").slice(1);
+            if (!target || !document.getElementById(target)) return;
+            e.preventDefault();
+            cleanScroll(target);
+          });
+        });
+        if (location.hash) {
+          var initial = location.hash.slice(1);
+          if (document.getElementById(initial)) cleanScroll(initial);
+          else if (history.replaceState) {
+            history.replaceState(null, "", location.pathname + location.search);
+          }
+        }
+      })();
     })();
   </script>
 </body>
