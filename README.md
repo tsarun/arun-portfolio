@@ -1,40 +1,37 @@
-# Arun T.S. — Portfolio
+# Arun TS — Portfolio
 
-Senior AI Product Manager | 16+ years across Fintech, Telecom & Banking | Production GenAI at Verizon India | **Actively interviewing · Available immediately**
+Personal portfolio of **Arun TS**, Senior AI Product Manager & Product Leader (16+ years across AI, telecom, fintech, and banking).
 
-🔗 **Live site:** [tsarun.com](https://tsarun.com)
+A fully static site — no build step, no dependencies, no backend. Open `index.html` or deploy the folder as-is.
 
-## About
+## Deploy to GitHub Pages
 
-This is my personal portfolio — built to show how I think and build, not just what's on my resume. It covers production AI work, case studies with real tradeoffs, certifications, and side projects built using the Claude API.
+1. Push this folder to your repository (e.g. `tsarun/tsarun.github.io` or any repo).
+2. In the repo: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)`**.
+3. For a custom domain (e.g. `tsarun.com`): add a `CNAME` file containing `tsarun.com`, then point your DNS at GitHub Pages (`A` records to `185.199.108.153`–`111`, or a `CNAME` to `<user>.github.io`).
 
-## What's here
+Any static host (Netlify, Vercel, Cloudflare Pages, S3) works the same way — drop the folder in.
 
-- Production AI case studies — B2C (8.3M+ sessions, 89% CSAT) and B2B (2,000+ daily users, 35% AHT reduction) at Verizon India
-- $15M Green Loan digital banking delivery at Commonwealth Bank of Australia (HCL Technologies)
-- Resume downloads: India, UAE, and ATS versions — all updated September 2026
-- Side projects: FeatureIQ (agentic competitor intelligence, in progress) and WealthTracker (AI personal finance dashboard)
-- Live "Ask Me Anything" powered by Claude API (Sonnet, max 300 tokens)
-- Recruiter Mode toggle for 60-second summary view
-- Digital business card modal
+## Files
 
-## Built with
+| File | Purpose |
+| --- | --- |
+| `index.html` | The entire site — markup, styles, and a small script for the theme toggle and recruiter mode |
+| `assets/arun-ts-hero.webp` | Hero portrait (light background) |
+| `assets/arun-ts-hero-dark.webp` | Hero portrait (dark background, shown automatically in dark mode) |
+| `assets/arun-ts-profile-photo.png` | Profile photo used in the recruiter brief |
+| `assets/Arun_TS_Senior_Product_Manager.pdf` | Resume, linked from all download buttons |
+| `assets/og-image.png` | Social share image (referenced by the Open Graph / Twitter meta tags) |
 
-- HTML/CSS/JS — single file, no framework
-- Deployed on Vercel, domain via GoDaddy
-- Claude API (Anthropic) for the live Ask Me Anything feature
-- pdf.js and mammoth.js for the Portfolio Compiler side project
-- jsPDF for client-side resume generation
+## Features
 
-## Status
+- Light/dark theme toggle — keyboard accessible, screen-reader announced, remembers the visitor's choice, respects reduced-motion settings
+- Recruiter mode — a 60-second one-view brief of the same content
+- Responsive hero with theme-aware portrait crossfade
+- Sections: impact metrics, selected work, experience, toolkit, independent AI builds with case studies, mentoring, LinkedIn recommendations, contact
+- SEO + social meta tags and schema.org Person markup
 
-**Actively maintained** — last updated September 2026.
+## Notes
 
-Currently building: FeatureIQ (agentic competitor intelligence) and Portfolio Compiler (AI portfolio generator SaaS MVP).
-
-## Contact
-
-- LinkedIn: [in/ts-arun](https://www.linkedin.com/in/ts-arun/)
-- Portfolio: [tsarun.com](https://tsarun.com)
-- Email: tsarun1989@gmail.com
-- Available immediately for Senior AI PM, Director of Product, or Head of AI roles — India, UAE, Singapore, Germany, or Remote
+- The `og:image` and canonical URLs point to `https://tsarun.com/` — update them in `index.html` if you deploy under a different domain.
+- Everything runs client-side; there is no tracking, no cookies, and nothing is sent to a server.
